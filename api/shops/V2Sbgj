@@ -1,0 +1,19 @@
+{
+  "id": "V2Sbgj",
+  "name": "pizza UGO 2号車",
+  "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbgj",
+  "image_url": "",
+  "headline": "マルゲリータ",
+  "location": "大学内指定場所",
+  "google_map": "",
+  "category": "キッチンカー",
+  "schedules": [
+    {
+      "date": "2026-10-07",
+      "location": "大学内指定場所",
+      "start_time": "11:00",
+      "end_time": "17:00",
+      "note": ""
+    }
+  ]
+}
