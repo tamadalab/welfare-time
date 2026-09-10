@@ -1,0 +1,19 @@
+{
+  "id": "4DSW5",
+  "name": "ARAPSUN",
+  "url": "https://schedule.mellow.jp/ss_web/shops/4DSW5",
+  "image_url": "",
+  "headline": "ケバブサンド",
+  "location": "大学内指定場所",
+  "google_map": "",
+  "category": "キッチンカー",
+  "schedules": [
+    {
+      "date": "2026-10-08",
+      "location": "大学内指定場所",
+      "start_time": "11:00",
+      "end_time": "17:00",
+      "note": ""
+    }
+  ]
+}
