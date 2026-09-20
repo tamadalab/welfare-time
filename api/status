@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-09-20T07:05:57.021593+09:00",
+  "last_updated": "2026-09-21T07:05:55.675450+09:00",
   "timezone": "JST",
   "data_range": {
     "start": "2026-05-01",
-    "end": "2026-10-22"
+    "end": "2026-10-23"
   },
   "shop_count": 50,
   "sources": [
