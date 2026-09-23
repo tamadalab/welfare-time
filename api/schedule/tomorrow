@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-24",
+  "date": "2026-09-25",
   "timezone": "JST",
   "facilities": [
     {
@@ -126,7 +126,7 @@
       "start_time": "12:00",
       "end_time": "13:00",
       "business_hours": "平日 12:00~13:00",
-      "note": ""
+      "note": "パンのみ"
     },
     {
       "id": "chushin-atm",
