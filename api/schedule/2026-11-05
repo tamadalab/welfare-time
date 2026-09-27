@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-11-05",
   "timezone": "JST",
   "facilities": [
     {
@@ -17,11 +17,11 @@
       "note": ""
     },
     {
-      "id": "dqSeXG",
-      "name": "京タコス",
-      "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG",
+      "id": "Z7SXr3",
+      "name": "Charubo",
+      "url": "https://schedule.mellow.jp/ss_web/shops/Z7SXr3",
       "image_url": "",
-      "headline": "お肉たっぷりタコライス",
+      "headline": "チュロス",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",

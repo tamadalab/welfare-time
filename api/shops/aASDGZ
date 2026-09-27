@@ -1,29 +1,22 @@
 {
-  "id": "V2Sbq5",
-  "name": "kaka男cafe",
-  "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbq5",
+  "id": "aASDGZ",
+  "name": "ホーのおうち",
+  "url": "https://schedule.mellow.jp/ss_web/shops/aASDGZ",
   "image_url": "",
-  "headline": "クレープ各種",
+  "headline": "ホーのミートソースコロッケ丼",
   "location": "大学内指定場所",
   "google_map": "",
   "category": "キッチンカー",
   "schedules": [
     {
-      "date": "2026-05-25",
+      "date": "2026-09-29",
       "location": "大学内指定場所",
       "start_time": "11:00",
       "end_time": "17:00",
       "note": ""
     },
     {
-      "date": "2026-09-30",
-      "location": "大学内指定場所",
-      "start_time": "11:00",
-      "end_time": "17:00",
-      "note": ""
-    },
-    {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "location": "大学内指定場所",
       "start_time": "11:00",
       "end_time": "17:00",

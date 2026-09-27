@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-11-06",
   "timezone": "JST",
   "facilities": [
     {
-      "id": "EpSrJN",
-      "name": "Lo Splendore",
-      "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN",
+      "id": "evSkPV",
+      "name": "こむくろキッチン",
+      "url": "https://schedule.mellow.jp/ss_web/shops/evSkPV",
       "image_url": "",
-      "headline": "生パスタ ペペロンチーノ",
+      "headline": "レモネードソーダ",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",
@@ -17,11 +17,11 @@
       "note": ""
     },
     {
-      "id": "dqSeXG",
-      "name": "京タコス",
-      "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG",
+      "id": "vmSoDg",
+      "name": "なかむーん家",
+      "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg",
       "image_url": "",
-      "headline": "お肉たっぷりタコライス",
+      "headline": "あいがけカレー",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",
