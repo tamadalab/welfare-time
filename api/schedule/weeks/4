@@ -1,11 +1,11 @@
 {
   "week_index": 4,
-  "start_date": "2026-10-19",
-  "end_date": "2026-10-25",
+  "start_date": "2026-10-26",
+  "end_date": "2026-11-01",
   "timezone": "JST",
   "daily_schedules": [
     {
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "timezone": "JST",
       "facilities": [
         {
@@ -54,7 +54,7 @@
       "sources": []
     },
     {
-      "date": "2026-10-20",
+      "date": "2026-10-27",
       "timezone": "JST",
       "facilities": [
         {
@@ -103,15 +103,15 @@
       "sources": []
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-28",
       "timezone": "JST",
       "facilities": [
         {
-          "id": "WkSdar",
-          "name": "リトルフィート カフェ キョウト",
-          "url": "https://schedule.mellow.jp/ss_web/shops/WkSdar",
+          "id": "dqSeq3",
+          "name": "旨夢路本舗",
+          "url": "https://schedule.mellow.jp/ss_web/shops/dqSeq3",
           "image_url": "",
-          "headline": "リトルフィートの夏が来た!",
+          "headline": "旨夢路式☆創作塩からあげ",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -166,7 +166,7 @@
       "sources": []
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-29",
       "timezone": "JST",
       "facilities": [
         {
@@ -215,7 +215,7 @@
       "sources": []
     },
     {
-      "date": "2026-10-23",
+      "date": "2026-10-30",
       "timezone": "JST",
       "facilities": [
         {
@@ -264,7 +264,7 @@
       "sources": []
     },
     {
-      "date": "2026-10-24",
+      "date": "2026-10-31",
       "timezone": "JST",
       "facilities": [
         {
@@ -313,7 +313,7 @@
       "sources": []
     },
     {
-      "date": "2026-10-25",
+      "date": "2026-11-01",
       "timezone": "JST",
       "facilities": [],
       "sources": []

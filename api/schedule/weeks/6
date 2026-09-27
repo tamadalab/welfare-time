@@ -1,166 +1,19 @@
 {
   "week_index": 6,
-  "start_date": "2026-11-02",
-  "end_date": "2026-11-08",
+  "start_date": "2026-11-09",
+  "end_date": "2026-11-15",
   "timezone": "JST",
   "daily_schedules": [
     {
-      "date": "2026-11-02",
+      "date": "2026-11-09",
       "timezone": "JST",
       "facilities": [
         {
-          "id": "chushin-atm",
-          "name": "京都中央信用金庫ATM",
-          "url": "",
-          "location": "並楽館陸橋下",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
+          "id": "dqSe1b",
+          "name": "メロンパンみのり",
+          "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b",
           "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        },
-        {
-          "id": "yucho-atm",
-          "name": "ゆうちょ銀行ATM",
-          "url": "",
-          "location": "並楽館陸橋下",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        },
-        {
-          "id": "smbc-atm",
-          "name": "三井住友銀行ATM",
-          "url": "",
-          "location": "並楽館1F",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        }
-      ],
-      "sources": []
-    },
-    {
-      "date": "2026-11-03",
-      "timezone": "JST",
-      "facilities": [
-        {
-          "id": "chushin-atm",
-          "name": "京都中央信用金庫ATM",
-          "url": "",
-          "location": "並楽館陸橋下",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        },
-        {
-          "id": "yucho-atm",
-          "name": "ゆうちょ銀行ATM",
-          "url": "",
-          "location": "並楽館陸橋下",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        },
-        {
-          "id": "smbc-atm",
-          "name": "三井住友銀行ATM",
-          "url": "",
-          "location": "並楽館1F",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        }
-      ],
-      "sources": []
-    },
-    {
-      "date": "2026-11-04",
-      "timezone": "JST",
-      "facilities": [
-        {
-          "id": "chushin-atm",
-          "name": "京都中央信用金庫ATM",
-          "url": "",
-          "location": "並楽館陸橋下",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        },
-        {
-          "id": "yucho-atm",
-          "name": "ゆうちょ銀行ATM",
-          "url": "",
-          "location": "並楽館陸橋下",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        },
-        {
-          "id": "smbc-atm",
-          "name": "三井住友銀行ATM",
-          "url": "",
-          "location": "並楽館1F",
-          "category": "ATM",
-          "headline": "",
-          "google_map": "",
-          "image_url": "",
-          "start_time": "08:45",
-          "end_time": "19:00",
-          "business_hours": "08:45-19:00",
-          "note": ""
-        }
-      ],
-      "sources": []
-    },
-    {
-      "date": "2026-11-05",
-      "timezone": "JST",
-      "facilities": [
-        {
-          "id": "EpSrJN",
-          "name": "Lo Splendore",
-          "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN",
-          "image_url": "",
-          "headline": "生パスタ ペペロンチーノ",
+          "headline": "メロンパンみのり",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -170,11 +23,11 @@
           "note": ""
         },
         {
-          "id": "Z7SXr3",
-          "name": "Charubo",
-          "url": "https://schedule.mellow.jp/ss_web/shops/Z7SXr3",
+          "id": "2ZSvWJ",
+          "name": "Xingfukitchen",
+          "url": "https://schedule.mellow.jp/ss_web/shops/2ZSvWJ",
           "image_url": "",
-          "headline": "チュロス",
+          "headline": "タルタル唐揚げ弁当",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -229,15 +82,15 @@
       "sources": []
     },
     {
-      "date": "2026-11-06",
+      "date": "2026-11-10",
       "timezone": "JST",
       "facilities": [
         {
-          "id": "evSkPV",
-          "name": "こむくろキッチン",
-          "url": "https://schedule.mellow.jp/ss_web/shops/evSkPV",
+          "id": "V2Sbq5",
+          "name": "kaka男cafe",
+          "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbq5",
           "image_url": "",
-          "headline": "レモネードソーダ",
+          "headline": "クレープ各種",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -247,11 +100,11 @@
           "note": ""
         },
         {
-          "id": "vmSoDg",
-          "name": "なかむーん家",
-          "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg",
+          "id": "dqSeXG",
+          "name": "京タコス",
+          "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG",
           "image_url": "",
-          "headline": "あいがけカレー",
+          "headline": "お肉たっぷりタコライス",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -306,9 +159,37 @@
       "sources": []
     },
     {
-      "date": "2026-11-07",
+      "date": "2026-11-11",
       "timezone": "JST",
       "facilities": [
+        {
+          "id": "aASDGZ",
+          "name": "ホーのおうち",
+          "url": "https://schedule.mellow.jp/ss_web/shops/aASDGZ",
+          "image_url": "",
+          "headline": "ホーのミートソースコロッケ丼",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
+        {
+          "id": "vmSb9R",
+          "name": "Panda Kitchen",
+          "url": "https://schedule.mellow.jp/ss_web/shops/vmSb9R",
+          "image_url": "",
+          "headline": "クロッフル",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
         {
           "id": "chushin-atm",
           "name": "京都中央信用金庫ATM",
@@ -319,8 +200,8 @@
           "google_map": "",
           "image_url": "",
           "start_time": "08:45",
-          "end_time": "17:00",
-          "business_hours": "08:45-17:00",
+          "end_time": "19:00",
+          "business_hours": "08:45-19:00",
           "note": ""
         },
         {
@@ -333,8 +214,8 @@
           "google_map": "",
           "image_url": "",
           "start_time": "08:45",
-          "end_time": "17:00",
-          "business_hours": "08:45-17:00",
+          "end_time": "19:00",
+          "business_hours": "08:45-19:00",
           "note": ""
         },
         {
@@ -347,16 +228,30 @@
           "google_map": "",
           "image_url": "",
           "start_time": "08:45",
-          "end_time": "17:00",
-          "business_hours": "08:45-17:00",
+          "end_time": "19:00",
+          "business_hours": "08:45-19:00",
           "note": ""
         }
       ],
       "sources": []
     },
     {
-      "date": "2026-11-08",
-      "timezone": "JST",
+      "date": "2026-11-12",
+      "facilities": [],
+      "sources": []
+    },
+    {
+      "date": "2026-11-13",
+      "facilities": [],
+      "sources": []
+    },
+    {
+      "date": "2026-11-14",
+      "facilities": [],
+      "sources": []
+    },
+    {
+      "date": "2026-11-15",
       "facilities": [],
       "sources": []
     }
