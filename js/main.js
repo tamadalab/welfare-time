@@ -7,6 +7,8 @@ const LABE_CLOSED = '🔵 営業終了';
 
 let currentData = null;
 let master = null;
+// 描画したカードの id を並び順に持つ。マップで先頭に移したカードを元の順に戻すのに使う。
+let renderedCardIds = [];
 
 // Path detection
 const currentPath = window.location.pathname.replace(/\/$/, '');
@@ -103,26 +105,31 @@ async function fetchData() {
         if (scheduleRes.ok) {
             currentData = await scheduleRes.json();
             
-            // Extract categories dynamically from facilities data
+            // カテゴリの一覧は、マスターに現れる順に並べ、キッチンカーは必ず最後に置く。
+            // 表示フィルタの項目の順と、並び替えのカテゴリ順に使う。
+            // マスターにキッチンカーの施設があっても途中に並ばないよう、集めるときは除いておく。
+            const KITCHEN_CAR_CATEGORY = 'キッチンカー';
             const categories = [];
             if (master && master.facilities) {
                 master.facilities.forEach(c => {
-                    if (c.category && !categories.includes(c.category)) {
+                    if (c.category && c.category !== KITCHEN_CAR_CATEGORY && !categories.includes(c.category)) {
                         categories.push(c.category);
                     }
                 });
             }
-            if (!categories.includes('キッチンカー')) {
-                categories.push('キッチンカー');
-            }
+            categories.push(KITCHEN_CAR_CATEGORY);
 
             // Initialize Filter and Sort Modules
             Filter.load();
             Sort.load();
-            Filter.initUI(categories, render);
-            Sort.initUI(render);
+            // 絞り込みや並び替えで描き直したときは、マップの強調をカーソルの位置に合わせ直す
+            const rerender = () => render(isMapPage ? syncMapHighlight : undefined);
+            Filter.initUI(categories, rerender);
+            Sort.initUI(rerender, categories);
             
-            render();
+            // マップの操作は、最初の描画が終わってから一度だけ初期化する。
+            // イベントは一覧とマップに委譲するので、描き直すたびに初期化し直す必要はない。
+            render(isMapPage ? initMapInteractions : undefined);
             renderProvenance(currentData.sources);
         } else if (shopGrid) {
             shopGrid.innerHTML = '<div class="col-span-full text-center text-slate-400 py-12">営業予定が見つかりませんでした</div>';
@@ -142,7 +149,11 @@ async function fetchData() {
     }
 }
 
-function render() {
+/**
+ * 店舗の一覧を描画する。
+ * @param {Function} [onRendered] - DOM を作り終えたあとに同期的に実行するコールバック
+ */
+function render(onRendered) {
     if (!currentData) return;
     const grid = document.getElementById('shop-grid');
     if (!grid) return;
@@ -160,8 +171,10 @@ function render() {
     // 2. Sort
     allShops = Sort.sort(allShops, getLabel, LABE_NOW_OPEN);
 
+    renderedCardIds = allShops.map(shop => 'card-' + shop.id);
     if (allShops.length === 0) {
         grid.innerHTML = '<div class="col-span-full text-center text-slate-400 py-12 font-medium bg-white dark:bg-slate-800 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">条件に一致する店舗がありません</div>';
+        if (onRendered) onRendered();
         return;
     }
 
@@ -223,10 +236,7 @@ function render() {
         grid.insertAdjacentHTML('beforeend', html);
     });
 
-    const isMap = window.location.pathname.includes('/map/');
-    if (isMap && typeof initMapInteractions === 'function') {
-        initMapInteractions(allShops);
-    }
+    if (onRendered) onRendered();
 }
 
 function renderProvenance(sources) {
@@ -287,8 +297,14 @@ if (themeBtn) {
     themeBtn.onclick = () => applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
 }
 
+// --- Reload Button ---
+document.getElementById('btn-reload')?.addEventListener('click', reloadPage);
+
 // --- Map Logic ---
 const IMAGE_WIDTH = 1019, IMAGE_HEIGHT = 747;
+// 強調表示で、対象外のカードとマップの画像を薄くするクラス。style を直接書き換えず、クラスの付け外しで表す。
+const DIMMED_CARD_CLASS = 'opacity-30';
+const DIMMED_MAP_CLASS = 'opacity-50';
 function updateOverlay() {
     if (!master) return;
     const img = document.querySelector('#map-wrapper img');
@@ -305,67 +321,155 @@ function updateOverlay() {
     });
 }
 
-async function initMapInteractions(displayedShops) {
+const CARD_SELECTOR = '[id^="card-"]';
+const HIGHLIGHTED_CARD_CLASSES = ['ring-2', 'ring-ksu', 'dark:ring-blue-500'];
+// 場所がこの値の施設（キッチンカー）は、ピロティの建物に対応づける
+const KITCHEN_CAR_LOCATION = '大学内指定場所';
+const KITCHEN_CAR_BUILDING = 'pilotis';
+
+/** カードの施設がある建物の id を返す。マップ外なら null。 */
+function findBuildingOfCard(card) {
+    const shopId = card.id.replace('card-', '');
+    const buildingId = Object.keys(master.buildings).find(k => master.buildings[k].shops.includes(shopId));
+    if (buildingId) return buildingId;
+    return card.dataset.location === KITCHEN_CAR_LOCATION ? KITCHEN_CAR_BUILDING : null;
+}
+
+// delegateHover() で登録した、カーソルが入った・出たときの処理の一覧
+const hoverTargets = [];
+
+/**
+ * container の中の selector に合う要素に、カーソルが入った・出たときの処理を登録する。
+ * 要素ごとにイベントを設定せず、document の mouseover でカーソルの下の要素が変わったかを判定する。
+ * mouseout には頼らない。カーソルの下の要素が描き直しで取り除かれると、その要素の mouseout は
+ * document まで届かず、離れたことを検知できなくなるためである。
+ */
+function delegateHover(container, selector, onEnter, onLeave) {
+    hoverTargets.push({ container, selector, onEnter, onLeave, active: null });
+}
+
+function updateHover(target) {
+    const next = hoverTargets.map(h => {
+        const el = target && h.container.contains(target) ? target.closest(h.selector) : null;
+        return el && h.container.contains(el) ? el : null;
+    });
+    // 離れた処理をすべて済ませてから、入った処理を行う。
+    // カードから建物へ移ったときに、カードの強調の解除が建物の強調を消さないようにするため。
+    hoverTargets.forEach((h, i) => {
+        if (h.active && h.active !== next[i]) h.onLeave(h.active);
+    });
+    hoverTargets.forEach((h, i) => {
+        if (next[i] && next[i] !== h.active) h.onEnter(next[i]);
+        h.active = next[i];
+    });
+}
+
+document.addEventListener('mouseover', e => updateHover(e.target));
+// ウィンドウの外に出たときは、どの要素からも離れたものとする
+document.addEventListener('mouseout', e => { if (!e.relatedTarget) updateHover(null); });
+
+/** 建物の施設のカードを強調して一覧の先頭に移し、ほかのカードを薄くする。 */
+function highlightBuilding(buildingId, shopGrid) {
+    const cards = Array.from(shopGrid.querySelectorAll(CARD_SELECTOR));
+    const matched = cards.filter(card => findBuildingOfCard(card) === buildingId);
+    cards.forEach(card => {
+        const isMatch = matched.includes(card);
+        card.classList.toggle(DIMMED_CARD_CLASS, !isMatch);
+        HIGHLIGHTED_CARD_CLASSES.forEach(c => card.classList.toggle(c, isMatch));
+    });
+    // 先頭に移すときは後ろから順に入れ、強調したカードどうしの並び順を保つ
+    matched.reverse().forEach(card => shopGrid.prepend(card));
+}
+
+/** 建物の強調を解除し、カードを描画したときの並び順に戻す。一覧は描き直さない。 */
+function clearBuildingHighlight(shopGrid) {
+    shopGrid.querySelectorAll(CARD_SELECTOR).forEach(card => {
+        card.classList.remove(DIMMED_CARD_CLASS, ...HIGHLIGHTED_CARD_CLASSES);
+    });
+    renderedCardIds.forEach(id => {
+        const card = document.getElementById(id);
+        if (card) shopGrid.appendChild(card);
+    });
+}
+
+/** カードの施設の建物を強調する。マップ外なら、マップを薄くしてその旨を表示する。 */
+function highlightCard(card, shopGrid) {
+    const buildingId = findBuildingOfCard(card);
+    const feedbackOverlay = document.getElementById('map-feedback-overlay');
+    const mapImg = document.querySelector('#map-wrapper img');
+    if (buildingId) {
+        document.getElementById('area-' + buildingId)?.classList.add('highlighted');
+        if (feedbackOverlay) feedbackOverlay.classList.add('hidden');
+        if (mapImg) mapImg.classList.remove(DIMMED_MAP_CLASS);
+    } else {
+        if (feedbackOverlay) {
+            feedbackOverlay.classList.remove('hidden');
+            feedbackOverlay.classList.add('flex');
+        }
+        if (mapImg) mapImg.classList.add(DIMMED_MAP_CLASS);
+    }
+    shopGrid.querySelectorAll(CARD_SELECTOR).forEach(c => c.classList.toggle(DIMMED_CARD_CLASS, c !== card));
+}
+
+/** カードの強調を解除する。 */
+function clearCardHighlight(shopGrid, overlay) {
+    overlay.querySelectorAll('.building-area').forEach(area => area.classList.remove('highlighted'));
+    const feedbackOverlay = document.getElementById('map-feedback-overlay');
+    const mapImg = document.querySelector('#map-wrapper img');
+    if (feedbackOverlay) {
+        feedbackOverlay.classList.add('hidden');
+        feedbackOverlay.classList.remove('flex');
+    }
+    if (mapImg) mapImg.classList.remove(DIMMED_MAP_CLASS);
+    shopGrid.querySelectorAll(CARD_SELECTOR).forEach(c => c.classList.remove(DIMMED_CARD_CLASS));
+}
+
+// 最後に分かっているカーソルの位置（ビューポート座標）。ウィンドウの外に出たら null にする。
+// 描き直した直後はブラウザが :hover を更新していないため、カーソルの下の要素はこの位置から求める。
+let lastPointer = null;
+document.addEventListener('mousemove', e => { lastPointer = { x: e.clientX, y: e.clientY }; });
+document.addEventListener('mouseout', e => { if (!e.relatedTarget) lastPointer = null; });
+
+/**
+ * 一覧を描き直したあと、強調の状態をカーソルの位置に合わせ直す。
+ * カードは作り直されているので、古いカードに対する強調（建物の強調やマップの薄さ）を解除してから、
+ * カーソルが建物かカードの上にあれば、新しいカードに対して強調し直す。
+ */
+function syncMapHighlight() {
     const overlay = document.getElementById('overlay');
     const shopGrid = document.getElementById('shop-grid');
     if (!overlay || !shopGrid || !master) return;
+    clearCardHighlight(shopGrid, overlay);
+    const pointed = lastPointer && document.elementFromPoint(lastPointer.x, lastPointer.y);
+    const hoveredArea = pointed && overlay.contains(pointed) ? pointed.closest('.building-area') : null;
+    const hoveredCard = pointed && shopGrid.contains(pointed) ? pointed.closest(CARD_SELECTOR) : null;
+    if (hoveredArea) {
+        highlightBuilding(hoveredArea.id.replace('area-', ''), shopGrid);
+    } else if (hoveredCard) {
+        highlightCard(hoveredCard, shopGrid);
+    }
+}
+
+/** マップの建物の範囲を作り、一覧とマップの連動を登録する。一度だけ呼ぶ。 */
+function initMapInteractions() {
+    const overlay = document.getElementById('overlay');
+    const shopGrid = document.getElementById('shop-grid');
+    if (!overlay || !shopGrid || !master) return;
+
     overlay.innerHTML = '';
-    
-    Object.entries(master.buildings).forEach(([id, b]) => {
+    Object.keys(master.buildings).forEach(id => {
         const div = document.createElement('div');
-        div.className = 'building-area'; 
+        div.className = 'building-area';
         div.id = 'area-' + id;
         overlay.appendChild(div);
-        
-        div.onmouseenter = () => {
-            const matchedShops = displayedShops.filter(s => (id === 'pilotis' && s.location === '大学内指定場所') || b.shops.includes(s.id));
-            const matchedIds = matchedShops.map(s => 'card-' + s.id);
-            shopGrid.querySelectorAll('[id^="card-"]').forEach(card => {
-                const isMatch = matchedIds.includes(card.id);
-                card.style.opacity = isMatch ? '1' : '0.2';
-                if (isMatch) { 
-                    card.classList.add('ring-2', 'ring-ksu', 'dark:ring-blue-500'); 
-                    shopGrid.prepend(card); 
-                }
-            });
-        };
-        div.onmouseleave = () => render();
     });
 
-    shopGrid.querySelectorAll('[id^="card-"]').forEach(card => {
-        card.onmouseenter = () => {
-            const shopId = card.id.replace('card-', '');
-            let bId = Object.keys(master.buildings).find(k => master.buildings[k].shops.includes(shopId));
-            if (!bId && card.dataset.location === '大学内指定場所') bId = 'pilotis';
-            
-            const feedbackOverlay = document.getElementById('map-feedback-overlay');
-            const mapImg = document.querySelector('#map-wrapper img');
-            if (bId) {
-                const area = document.getElementById('area-' + bId);
-                if (area) area.classList.add('highlighted');
-                if (feedbackOverlay) feedbackOverlay.classList.add('hidden');
-                if (mapImg) mapImg.style.opacity = '1';
-            } else {
-                if (feedbackOverlay) {
-                    feedbackOverlay.classList.remove('hidden');
-                    feedbackOverlay.classList.add('flex');
-                }
-                if (mapImg) mapImg.style.opacity = '0.5';
-            }
-            shopGrid.querySelectorAll('[id^="card-"]').forEach(c => { if (c !== card) c.style.opacity = '0.3'; });
-        };
-        card.onmouseleave = () => {
-            overlay.querySelectorAll('.building-area').forEach(area => area.classList.remove('highlighted'));
-            const feedbackOverlay = document.getElementById('map-feedback-overlay');
-            const mapImg = document.querySelector('#map-wrapper img');
-            if (feedbackOverlay) {
-                feedbackOverlay.classList.add('hidden');
-                feedbackOverlay.classList.remove('flex');
-            }
-            if (mapImg) mapImg.style.opacity = '1';
-            shopGrid.querySelectorAll('[id^="card-"]').forEach(c => { c.style.opacity = '1'; });
-        };
-    });
+    delegateHover(overlay, '.building-area',
+        area => highlightBuilding(area.id.replace('area-', ''), shopGrid),
+        () => clearBuildingHighlight(shopGrid));
+    delegateHover(shopGrid, CARD_SELECTOR,
+        card => highlightCard(card, shopGrid),
+        () => clearCardHighlight(shopGrid, overlay));
     updateOverlay();
 }
 
