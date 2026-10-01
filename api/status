@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-01T17:18:10.230177+09:00",
+  "last_updated": "2026-10-01T17:44:35.956128+09:00",
   "timezone": "JST",
   "data_range": {
     "start": "2026-05-01",
@@ -14,10 +14,6 @@
     {
       "name": "2026_06.pdf",
       "url": "https://tamadalab.github.io/welfare-time/daily/2026_06.pdf"
-    },
-    {
-      "name": "2026_10.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_10.pdf"
     }
   ]
 }
