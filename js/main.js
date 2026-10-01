@@ -150,6 +150,77 @@ async function fetchData() {
 }
 
 /**
+ * 店舗のカードの HTML を作る。
+ * @param {Object} shop - API の facilities の1件
+ * @param {{label: string, class: string}} status - getShopStatus() の結果
+ * @param {'grid'|'list'} view - カードの表示形式
+ */
+function buildCardHtml(shop, status, view) {
+    const category = shop.category || '店舗';
+    // 常設ではない店舗や大学の管理外の店舗は、大学が公開している情報と区別できるようにバッジを付ける
+    const temporaryBadge = shop.temporary
+        ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 tracking-wider shrink-0">臨時</span>'
+        : '';
+    let html = '';
+    if (view === 'grid') {
+        html = `
+        <div id="card-${shop.id}" data-location="${shop.location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1">
+            <div class="flex justify-between items-start mb-2 gap-2">
+                <div class="flex items-center gap-1 min-w-0">
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">${category}</span>
+                    ${temporaryBadge}
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-black tracking-tight shrink-0 ${status.class}">${status.label}</span>
+            </div>
+            <h3 class="font-black text-slate-900 dark:text-white mb-1 leading-tight line-clamp-2" title="${shop.name}">${shop.name}</h3>
+            ${shop.headline ? `<p class="text-[10px] text-ksu dark:text-blue-400 font-bold line-clamp-1 mb-2">${shop.headline}</p>` : ''}
+            
+            <div class="mt-auto pt-2 border-t border-slate-50 dark:border-slate-700/50">
+                <div class="flex items-center justify-between gap-2 text-[10px] sm:text-[11px]">
+                    <div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 min-w-0">
+                        <i class="bi bi-geo-alt shrink-0"></i>
+                        <span class="truncate">${shop.location}</span>
+                    </div>
+                    <div class="flex items-center gap-1 font-bold text-slate-700 dark:text-slate-300 shrink-0">
+                        <i class="bi bi-clock shrink-0 text-ksu dark:text-blue-400"></i>
+                        <span>${shop.start_time}～${shop.end_time}</span>
+                    </div>
+                </div>
+            </div>
+            
+            ${shop.note ? `<div class="mt-2 p-1.5 bg-slate-50 dark:bg-slate-900/50 rounded text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed border border-slate-100 dark:border-slate-800">${shop.note}</div>` : ''}
+            ${shop.url ? `<a href="${shop.url}" target="_blank" class="absolute inset-0 z-10" aria-label="${shop.name}の情報を開く"></a>` : ''}
+        </div>`;
+    } else {
+        html = `
+        <div id="card-${shop.id}" data-location="${shop.location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm hover:shadow-md transition-all duration-200">
+            <div class="flex justify-between items-start mb-2 gap-2">
+                <div class="flex items-center gap-2 min-w-0">
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">${category}</span>
+                    ${temporaryBadge}
+                    <h3 class="font-black text-slate-900 dark:text-white truncate" title="${shop.name}">${shop.name}</h3>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-black tracking-tight shrink-0 ${status.class}">${status.label}</span>
+            </div>
+            ${shop.headline ? `<p class="text-[10px] text-ksu dark:text-blue-400 font-bold mb-2 truncate">${shop.headline}</p>` : ''}
+            <div class="flex items-center justify-between gap-4 text-[11px] mt-auto">
+                <div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 min-w-0">
+                    <i class="bi bi-geo-alt shrink-0"></i>
+                    <span class="truncate">${shop.location}</span>
+                </div>
+                <div class="flex items-center gap-1.5 font-bold text-slate-700 dark:text-slate-300 shrink-0">
+                    <i class="bi bi-clock shrink-0 text-ksu dark:text-blue-400"></i>
+                    <span>${shop.start_time}～${shop.end_time}</span>
+                </div>
+            </div>
+            ${shop.note ? `<div class="mt-2 text-[10px] text-slate-400 dark:text-slate-500 line-clamp-1 italic">${shop.note}</div>` : ''}
+            ${shop.url ? `<a href="${shop.url}" target="_blank" class="absolute inset-0 z-10" aria-label="${shop.name}の情報を開く"></a>` : ''}
+        </div>`;
+    }
+    return html;
+}
+
+/**
  * 店舗の一覧を描画する。
  * @param {Function} [onRendered] - DOM を作り終えたあとに同期的に実行するコールバック
  */
@@ -180,60 +251,7 @@ function render(onRendered) {
 
     allShops.forEach(shop => {
         const status = getShopStatus(shop.start_time, shop.end_time, targetDateStr);
-        const category = shop.category || '店舗';
-        let html = '';
-        if (currentView === 'grid') {
-            html = `
-            <div id="card-${shop.id}" data-location="${shop.location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1">
-                <div class="flex justify-between items-start mb-2 gap-2">
-                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">${category}</span>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-black tracking-tight shrink-0 ${status.class}">${status.label}</span>
-                </div>
-                <h3 class="font-black text-slate-900 dark:text-white mb-1 leading-tight line-clamp-2" title="${shop.name}">${shop.name}</h3>
-                ${shop.headline ? `<p class="text-[10px] text-ksu dark:text-blue-400 font-bold line-clamp-1 mb-2">${shop.headline}</p>` : ''}
-                
-                <div class="mt-auto pt-2 border-t border-slate-50 dark:border-slate-700/50">
-                    <div class="flex items-center justify-between gap-2 text-[10px] sm:text-[11px]">
-                        <div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 min-w-0">
-                            <i class="bi bi-geo-alt shrink-0"></i>
-                            <span class="truncate">${shop.location}</span>
-                        </div>
-                        <div class="flex items-center gap-1 font-bold text-slate-700 dark:text-slate-300 shrink-0">
-                            <i class="bi bi-clock shrink-0 text-ksu dark:text-blue-400"></i>
-                            <span>${shop.start_time}～${shop.end_time}</span>
-                        </div>
-                    </div>
-                </div>
-                
-                ${shop.note ? `<div class="mt-2 p-1.5 bg-slate-50 dark:bg-slate-900/50 rounded text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed border border-slate-100 dark:border-slate-800">${shop.note}</div>` : ''}
-                ${shop.url ? `<a href="${shop.url}" target="_blank" class="absolute inset-0 z-10" aria-label="${shop.name}の情報を開く"></a>` : ''}
-            </div>`;
-        } else {
-            html = `
-            <div id="card-${shop.id}" data-location="${shop.location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm hover:shadow-md transition-all duration-200">
-                <div class="flex justify-between items-start mb-2 gap-2">
-                    <div class="flex items-center gap-2 min-w-0">
-                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">${category}</span>
-                        <h3 class="font-black text-slate-900 dark:text-white truncate" title="${shop.name}">${shop.name}</h3>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-black tracking-tight shrink-0 ${status.class}">${status.label}</span>
-                </div>
-                ${shop.headline ? `<p class="text-[10px] text-ksu dark:text-blue-400 font-bold mb-2 truncate">${shop.headline}</p>` : ''}
-                <div class="flex items-center justify-between gap-4 text-[11px] mt-auto">
-                    <div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 min-w-0">
-                        <i class="bi bi-geo-alt shrink-0"></i>
-                        <span class="truncate">${shop.location}</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 font-bold text-slate-700 dark:text-slate-300 shrink-0">
-                        <i class="bi bi-clock shrink-0 text-ksu dark:text-blue-400"></i>
-                        <span>${shop.start_time}～${shop.end_time}</span>
-                    </div>
-                </div>
-                ${shop.note ? `<div class="mt-2 text-[10px] text-slate-400 dark:text-slate-500 line-clamp-1 italic">${shop.note}</div>` : ''}
-                ${shop.url ? `<a href="${shop.url}" target="_blank" class="absolute inset-0 z-10" aria-label="${shop.name}の情報を開く"></a>` : ''}
-            </div>`;
-        }
-        grid.insertAdjacentHTML('beforeend', html);
+        grid.insertAdjacentHTML('beforeend', buildCardHtml(shop, status, currentView));
     });
 
     if (onRendered) onRendered();
@@ -327,12 +345,23 @@ const HIGHLIGHTED_CARD_CLASSES = ['ring-2', 'ring-ksu', 'dark:ring-blue-500'];
 const KITCHEN_CAR_LOCATION = '大学内指定場所';
 const KITCHEN_CAR_BUILDING = 'pilotis';
 
+/**
+ * 場所が建物の名前で始まるなら、その建物の id を返す（例：「並楽館前」→ heirakukan）。
+ * マスターに載っていない臨時の店舗を、場所の書き方から建物に対応づけるために使う。
+ * 名前が長い建物を先に調べ、一部が重なる名前でも取り違えないようにする。
+ */
+function findBuildingByLocation(location) {
+    const ids = Object.keys(master.buildings).sort((a, b) => master.buildings[b].name.length - master.buildings[a].name.length);
+    return ids.find(k => location.startsWith(master.buildings[k].name)) || null;
+}
+
 /** カードの施設がある建物の id を返す。マップ外なら null。 */
 function findBuildingOfCard(card) {
     const shopId = card.id.replace('card-', '');
     const buildingId = Object.keys(master.buildings).find(k => master.buildings[k].shops.includes(shopId));
     if (buildingId) return buildingId;
-    return card.dataset.location === KITCHEN_CAR_LOCATION ? KITCHEN_CAR_BUILDING : null;
+    if (card.dataset.location === KITCHEN_CAR_LOCATION) return KITCHEN_CAR_BUILDING;
+    return findBuildingByLocation(card.dataset.location);
 }
 
 // delegateHover() で登録した、カーソルが入った・出たときの処理の一覧

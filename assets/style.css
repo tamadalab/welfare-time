@@ -1,5 +1,5 @@
 /**
- * Custom styles for Shikaku (シカク)
+ * Custom styles for Welfare TIME
  * Complementing Tailwind CSS
  */
 
@@ -9,17 +9,37 @@
     cursor: pointer;
     pointer-events: auto;
     border: 2px solid transparent;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* box-shadow は含めない。含めると、マスクが建物の周りから外へ広がる動きになる */
+    transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
 }
 
-.building-area:hover, 
+/* 強調した建物は明るいまま残し、その外側（マップ全体）を巨大な影で暗くする。
+   はみ出した影は #map-wrapper の overflow-hidden で切り取られる。 */
+.building-area:hover,
 .building-area.highlighted {
-    background-color: rgba(59, 130, 246, 0.25);
     border-color: #3b82f6;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 0 100vmax rgba(15, 23, 42, 0.55);
     z-index: 50;
 }
+
+/* ヘルプの「臨時店舗の JSON を作る」フォーム（static/js/extra_form.js） */
+#xf .xf-input { width: 100%; padding: .5rem .75rem; border-radius: .5rem; border: 1px solid rgb(203 213 225); background: #fff; color: rgb(15 23 42); font-size: .875rem; }
+#xf .xf-input:focus { outline: 2px solid #00387D; outline-offset: 1px; }
+#xf .xf-input[aria-invalid="true"] { border-color: rgb(239 68 68); }
+#xf .xf-auto { width: auto; }
+#xf .xf-button { padding: .5rem .875rem; border-radius: .5rem; border: 1px solid rgb(203 213 225); background: #fff; color: rgb(51 65 85); font-size: .875rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
+#xf .xf-button:hover { background: rgb(241 245 249); }
+#xf .xf-primary { background: #00387D; border-color: #00387D; color: #fff; }
+#xf .xf-primary:hover { background: #00387D; opacity: .9; }
+#xf .xf-button[aria-disabled="true"], #xf .xf-button:disabled { opacity: .4; pointer-events: none; }
+#xf .xf-view-on { background: #00387D; color: #fff; }
+#xf .xf-view-off { background: #fff; color: rgb(71 85 105); }
+.dark #xf .xf-input { background: rgb(30 41 59); border-color: rgb(51 65 85); color: rgb(241 245 249); }
+.dark #xf .xf-button { background: rgb(30 41 59); border-color: rgb(51 65 85); color: rgb(226 232 240); }
+.dark #xf .xf-button:hover { background: rgb(51 65 85); }
+.dark #xf .xf-primary { background: rgb(59 130 246); border-color: rgb(59 130 246); color: #fff; }
+.dark #xf .xf-view-off { background: rgb(30 41 59); color: rgb(203 213 225); }
 
 /* Custom Scrollbar for Horizontal Navbar on Mobile */
 .no-scrollbar::-webkit-scrollbar {
