@@ -1385,6 +1385,20 @@
           "note": ""
         },
         {
+          "id": "family-mart-heiraku",
+          "name": "ファミリーマート",
+          "location": "並楽館1F",
+          "category": "コンビニ",
+          "url": "",
+          "google_map": "",
+          "image_url": "",
+          "headline": "",
+          "start_time": "8:00",
+          "end_time": "17:00",
+          "business_hours": "平日 8:00~19:00 水 8:00~18:00 土 8:00~17:00",
+          "note": ""
+        },
+        {
           "id": "maruzen-ms",
           "name": "丸善 M's style",
           "location": "天地館1F",
