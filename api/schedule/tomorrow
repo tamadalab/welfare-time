@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-05",
+  "date": "2026-10-06",
   "timezone": "JST",
   "facilities": [
     {
@@ -255,11 +255,11 @@
       "note": ""
     },
     {
-      "id": "vmSb9R",
-      "name": "Panda Kitchen",
-      "url": "https://schedule.mellow.jp/ss_web/shops/vmSb9R",
+      "id": "Z7S1R",
+      "name": "もんきち",
+      "url": "https://schedule.mellow.jp/ss_web/shops/Z7S1R",
       "image_url": "",
-      "headline": "クロッフル",
+      "headline": "デミグラスオムライス",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",
@@ -269,11 +269,11 @@
       "note": ""
     },
     {
-      "id": "2ZSvWJ",
-      "name": "Xingfukitchen",
-      "url": "https://schedule.mellow.jp/ss_web/shops/2ZSvWJ",
+      "id": "aASDGZ",
+      "name": "ホーのおうち",
+      "url": "https://schedule.mellow.jp/ss_web/shops/aASDGZ",
       "image_url": "",
-      "headline": "タルタル唐揚げ弁当",
+      "headline": "ホーのミートソースコロッケ丼",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",

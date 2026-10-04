@@ -1,11 +1,11 @@
 {
   "week_index": 0,
-  "start_date": "2026-09-28",
-  "end_date": "2026-10-04",
+  "start_date": "2026-10-05",
+  "end_date": "2026-10-11",
   "timezone": "JST",
   "daily_schedules": [
     {
-      "date": "2026-09-28",
+      "date": "2026-10-05",
       "timezone": "JST",
       "facilities": [
         {
@@ -333,13 +333,13 @@
       ],
       "sources": [
         {
-          "name": "2026_09.pdf",
-          "url": "https://tamadalab.github.io/welfare-time/daily/2026_09.pdf"
+          "name": "2026_10.pdf",
+          "url": "https://tamadalab.github.io/welfare-time/daily/2026_10.pdf"
         }
       ]
     },
     {
-      "date": "2026-09-29",
+      "date": "2026-10-06",
       "timezone": "JST",
       "facilities": [
         {
@@ -667,13 +667,13 @@
       ],
       "sources": [
         {
-          "name": "2026_09.pdf",
-          "url": "https://tamadalab.github.io/welfare-time/daily/2026_09.pdf"
+          "name": "2026_10.pdf",
+          "url": "https://tamadalab.github.io/welfare-time/daily/2026_10.pdf"
         }
       ]
     },
     {
-      "date": "2026-09-30",
+      "date": "2026-10-07",
       "timezone": "JST",
       "facilities": [
         {
@@ -915,11 +915,25 @@
           "note": ""
         },
         {
-          "id": "V2Sbq5",
-          "name": "kaka男cafe",
-          "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbq5",
+          "id": "WkSdar",
+          "name": "リトルフィート カフェ キョウト",
+          "url": "https://schedule.mellow.jp/ss_web/shops/WkSdar",
           "image_url": "",
-          "headline": "クレープ各種",
+          "headline": "リトルフィートの夏が来た!",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
+        {
+          "id": "V2Sbgj",
+          "name": "pizza UGO 2号車",
+          "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbgj",
+          "image_url": "",
+          "headline": "マルゲリータ",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -973,13 +987,13 @@
       ],
       "sources": [
         {
-          "name": "2026_09.pdf",
-          "url": "https://tamadalab.github.io/welfare-time/daily/2026_09.pdf"
+          "name": "2026_10.pdf",
+          "url": "https://tamadalab.github.io/welfare-time/daily/2026_10.pdf"
         }
       ]
     },
     {
-      "date": "2026-10-01",
+      "date": "2026-10-08",
       "timezone": "JST",
       "facilities": [
         {
@@ -1232,14 +1246,14 @@
           "start_time": "12:00",
           "end_time": "13:00",
           "business_hours": "平日 12:00~13:00",
-          "note": "パンのみ"
+          "note": ""
         },
         {
-          "id": "EpSrJN",
-          "name": "Lo Splendore",
-          "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN",
+          "id": "dqSeXG",
+          "name": "京タコス",
+          "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG",
           "image_url": "",
-          "headline": "生パスタ ペペロンチーノ",
+          "headline": "お肉たっぷりタコライス",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -1249,11 +1263,11 @@
           "note": ""
         },
         {
-          "id": "dqSeXG",
-          "name": "京タコス",
-          "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG",
+          "id": "4DSW5",
+          "name": "ARAPSUN",
+          "url": "https://schedule.mellow.jp/ss_web/shops/4DSW5",
           "image_url": "",
-          "headline": "お肉たっぷりタコライス",
+          "headline": "ケバブサンド",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -1313,7 +1327,7 @@
       ]
     },
     {
-      "date": "2026-10-02",
+      "date": "2026-10-09",
       "timezone": "JST",
       "facilities": [
         {
@@ -1647,7 +1661,7 @@
       ]
     },
     {
-      "date": "2026-10-03",
+      "date": "2026-10-10",
       "timezone": "JST",
       "facilities": [
         {
@@ -1679,17 +1693,17 @@
           "note": ""
         },
         {
-          "id": "family-mart-heiraku",
-          "name": "ファミリーマート",
-          "location": "並楽館1F",
-          "category": "コンビニ",
+          "id": "maruzen-ms",
+          "name": "丸善 M's style",
+          "location": "天地館1F",
+          "category": "ショップ",
           "url": "",
           "google_map": "",
           "image_url": "",
-          "headline": "",
-          "start_time": "8:00",
+          "headline": "なんでもそろうキャンパスショップ",
+          "start_time": "12:00",
           "end_time": "17:00",
-          "business_hours": "平日 8:00~19:00 水 8:00~18:00 土 8:00~17:00",
+          "business_hours": "平日 10:00~17:00",
           "note": ""
         },
         {
@@ -1704,6 +1718,20 @@
           "start_time": "10:00",
           "end_time": "17:00",
           "business_hours": "月~土 10:00~17:00",
+          "note": ""
+        },
+        {
+          "id": "family-mart-tenchi",
+          "name": "ファミリーマート",
+          "location": "天地館1F",
+          "category": "コンビニ",
+          "url": "",
+          "google_map": "",
+          "image_url": "",
+          "headline": "",
+          "start_time": "8:00",
+          "end_time": "17:00",
+          "business_hours": "平日 8:00~19:00 水 8:00~18:00 土 8:00~17:00",
           "note": ""
         },
         {
@@ -1771,7 +1799,7 @@
       ]
     },
     {
-      "date": "2026-10-04",
+      "date": "2026-10-11",
       "timezone": "JST",
       "facilities": [
         {
