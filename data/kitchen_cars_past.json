@@ -1122,6 +1122,17 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
   },
   {
+    "id": "4DSW5",
+    "name": "ARAPSUN",
+    "location": "",
+    "date": "2026-10-08",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "ケバブサンド",
+    "url": "https://schedule.mellow.jp/ss_web/shops/4DSW5"
+  },
+  {
     "id": "pMSXgz",
     "name": "SKY KITCHEN",
     "location": "",
@@ -1197,6 +1208,17 @@
     "business_hours": "11:00〜17:00",
     "headline": "生パスタ ペペロンチーノ",
     "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN"
+  },
+  {
+    "id": "dqSeXG",
+    "name": "京タコス",
+    "location": "",
+    "date": "2026-10-15",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "お肉たっぷりタコライス",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
   },
   {
     "id": "vmSb9R",
@@ -1439,17 +1461,6 @@
     "business_hours": "11:00〜17:00",
     "headline": "お肉たっぷりタコライス",
     "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
-  },
-  {
-    "id": "4DSW5",
-    "name": "ARAPSUN",
-    "location": "",
-    "date": "2026-10-08",
-    "start_time": "11:00",
-    "end_time": "17:00",
-    "business_hours": "11:00〜17:00",
-    "headline": "ケバブサンド",
-    "url": "https://schedule.mellow.jp/ss_web/shops/4DSW5"
   },
   {
     "id": "JmS6yB",
