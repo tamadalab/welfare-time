@@ -13,9 +13,8 @@ let renderedCardIds = [];
 // Path detection
 const currentPath = window.location.pathname.replace(/\/$/, '');
 const isMapPage = currentPath.endsWith('/map') || currentPath.endsWith('/map/index.html') || currentPath.endsWith('/map.html');
-const isListPage = currentPath.endsWith('/list') || currentPath.endsWith('/list/index.html') || currentPath.endsWith('/list.html');
 
-const currentView = (isMapPage || isListPage) ? 'list' : (localStorage.getItem('ksu-harapeco-view') || 'grid');
+const currentView = isMapPage ? 'list' : 'grid';
 
 function getTargetDateStr() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -509,14 +508,14 @@ document.querySelector('#map-wrapper img')?.addEventListener('load', updateOverl
 const targetDateStr = getTargetDateStr();
 document.querySelectorAll('nav a').forEach(a => {
     const url = new URL(a.href, window.location.origin);
-    url.searchParams.set('date', targetDateStr);
-    a.href = url.toString();
+    if (url.hostname === window.location.hostname) {
+        url.searchParams.set('date', targetDateStr);
+        a.href = url.toString();
+    }
     
     const href = a.getAttribute('href').replace(/\/$/, '');
     const isHome = href === '' || href === `${BASE_PATH}`;
-    const isMatch = (isHome && !isMapPage && !isListPage) || 
-                    (href.endsWith('/map') && isMapPage) || 
-                    (href.endsWith('/list') && isListPage);
+    const isMatch = isHome || (href.endsWith('/map') && isMapPage);
 
     if (isMatch) a.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-ksu', 'dark:text-blue-400');
 });
@@ -554,6 +553,6 @@ if (dateSelector && dateInput && typeof flatpickr === 'function') {
 // }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const isDataPage = ['index.html', 'list.html', 'map.html', '', '/'].some(page => window.location.pathname.endsWith(page));
+    const isDataPage = ['index.html', 'map.html', '', '/'].some(page => window.location.pathname.endsWith(page));
     if (isDataPage) fetchData();
 });
