@@ -1,9 +1,9 @@
 const BASE_PATH = window.BASE_PATH;
 const API_BASE = `${BASE_PATH}/api/schedule`;
 const STATUS_API = `${BASE_PATH}/api/status`;
-const LABE_NOW_OPEN = '🟢 営業中';
-const LABE_PREPARING = '🟡 準備中';
-const LABE_CLOSED = '🔵 営業終了';
+const LABEL_NOW_OPEN = '🟢 営業中';
+const LABEL_PREPARING = '🟡 準備中';
+const LABEL_CLOSED = '🔵 営業終了';
 
 let currentData = null;
 let master = null;
@@ -41,15 +41,15 @@ function getShopStatus(startTime, endTime, targetDateStr) {
     if (!startTime || !endTime || startTime === '00:00') return closedStatus;
     const now = new Date();
     const todayStr = now.toLocaleDateString('sv-SE');
-    if (targetDateStr < todayStr) return { label: LABE_CLOSED, class: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' };
-    if (targetDateStr > todayStr) return { label: LABE_PREPARING, class: 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' };
+    if (targetDateStr < todayStr) return { label: LABEL_CLOSED, class: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' };
+    if (targetDateStr > todayStr) return { label: LABEL_PREPARING, class: 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' };
 
     const nowTotal = now.getHours() * 60 + now.getMinutes();
     const [sh, sm] = startTime.split(':').map(Number);
     const [eh, em] = endTime.split(':').map(Number);
-    if (nowTotal < (sh*60+sm)) return { label: LABE_PREPARING, class: 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' };
-    if (nowTotal >= (sh*60+sm) && nowTotal < (eh*60+em)) return { label: LABE_NOW_OPEN, class: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' };
-    return { label: LABE_CLOSED, class: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' };
+    if (nowTotal < (sh*60+sm)) return { label: LABEL_PREPARING, class: 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' };
+    if (nowTotal >= (sh*60+sm) && nowTotal < (eh*60+em)) return { label: LABEL_NOW_OPEN, class: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' };
+    return { label: LABEL_CLOSED, class: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' };
 }
 
 function updateElementText(id, text) {
@@ -237,10 +237,10 @@ function render(onRendered) {
     const getLabel = (s) => getShopStatus(s.start_time, s.end_time, targetDateStr).label;
     
     // 1. Filter
-    allShops = allShops.filter(s => Filter.match(s, getLabel(s), LABE_NOW_OPEN));
+    allShops = allShops.filter(s => Filter.match(s, getLabel(s), LABEL_NOW_OPEN));
 
     // 2. Sort
-    allShops = Sort.sort(allShops, getLabel, LABE_NOW_OPEN);
+    allShops = Sort.sort(allShops, getLabel, LABEL_NOW_OPEN);
 
     renderedCardIds = allShops.map(shop => 'card-' + shop.id);
     if (allShops.length === 0) {
