@@ -1221,6 +1221,17 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
   },
   {
+    "id": "dqSe1b",
+    "name": "メロンパンみのり",
+    "location": "",
+    "date": "2026-10-16",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "メロンパンみのり",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b"
+  },
+  {
     "id": "vmSb9R",
     "name": "Panda Kitchen",
     "location": "",
@@ -1230,6 +1241,17 @@
     "business_hours": "11:00〜17:00",
     "headline": "クロッフル",
     "url": "https://schedule.mellow.jp/ss_web/shops/vmSb9R"
+  },
+  {
+    "id": "pMSXgz",
+    "name": "SKY KITCHEN",
+    "location": "",
+    "date": "2026-10-23",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "照り焼きチキン",
+    "url": "https://schedule.mellow.jp/ss_web/shops/pMSXgz"
   },
   {
     "id": "dqSeq3",
