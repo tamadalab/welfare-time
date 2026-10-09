@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "timezone": "JST",
   "facilities": [
     {
@@ -255,11 +255,11 @@
       "note": ""
     },
     {
-      "id": "dqSeXG",
-      "name": "京タコス",
-      "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG",
+      "id": "pMSXgz",
+      "name": "SKY KITCHEN",
+      "url": "https://schedule.mellow.jp/ss_web/shops/pMSXgz",
       "image_url": "",
-      "headline": "お肉たっぷりタコライス",
+      "headline": "照り焼きチキン",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",
@@ -269,11 +269,11 @@
       "note": ""
     },
     {
-      "id": "4DSW5",
-      "name": "ARAPSUN",
-      "url": "https://schedule.mellow.jp/ss_web/shops/4DSW5",
+      "id": "dqSe1b",
+      "name": "メロンパンみのり",
+      "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b",
       "image_url": "",
-      "headline": "ケバブサンド",
+      "headline": "メロンパンみのり",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",
