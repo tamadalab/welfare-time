@@ -514,7 +514,7 @@ document.querySelectorAll('nav a').forEach(a => {
     
     const href = a.getAttribute('href').replace(/\/$/, '');
     const isHome = href === '' || href === `${BASE_PATH}`;
-    const isMatch = (isHome && !isMapPage) || 
+    const isMatch = (isHome && !isMapPage) ||
                     (href.endsWith('/map') && isMapPage);
 
     if (isMatch) a.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-ksu', 'dark:text-blue-400');
