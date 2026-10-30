@@ -15,6 +15,7 @@
 - `content/` 配下の Markdown には、HTMLタグを書かずに標準的な Markdown で書きます。ページの設定は Front Matter に書きます。
 - レイアウトの処理は `layouts/` 配下（`_default/baseof.html`、`partials/`、`shortcodes/`）にまとめます。
 - ヘルプの変更履歴のページは、リポジトリ直下の `CHANGELOG.md` をショートコード（`layouts/shortcodes/changelog.html`）でそのまま表示します。
+- ヘルプの「スマートフォンでのアプリ化」のページは、サイトの QR コード（`static/assets/qr.svg`）をショートコード（`layouts/shortcodes/qr.html`）で表示します。
 
 ## 画面の要件
 

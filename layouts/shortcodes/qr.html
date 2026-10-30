@@ -1,0 +1,11 @@
+{{- /*
+  サイトの URL を示す QR コードを表示する。PC で見ている人がスマートフォンで開き直せるようにする。
+  Markdown の画像ではサブパスが付かないため、relURL でパスを作る。
+  背景が暗いと読み取れない端末があるので、ダークモードでも QR コードの背景は白にする。
+*/ -}}
+<div class="not-prose my-4">
+  <div class="bg-white p-3 rounded-lg inline-block">
+    <img src="{{ "assets/qr.svg" | relURL }}" alt="Welfare TIME の QR コード" class="w-48 h-48">
+  </div>
+  <p class="mt-2 text-sm">{{ site.BaseURL }}</p>
+</div>
