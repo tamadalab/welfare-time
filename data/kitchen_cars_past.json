@@ -1474,6 +1474,17 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/pMSXgz"
   },
   {
+    "id": "RoSVpz",
+    "name": "kitchen car DOZO",
+    "location": "",
+    "date": "2026-10-30",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "ホットサンド （ハムエッグチーズ）",
+    "url": "https://schedule.mellow.jp/ss_web/shops/RoSVpz"
+  },
+  {
     "id": "EpSrJN",
     "name": "Lo Splendore",
     "location": "",
@@ -1692,17 +1703,6 @@
     "business_hours": "11:00〜17:00",
     "headline": "お肉たっぷりタコライス",
     "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
-  },
-  {
-    "id": "RoSVpz",
-    "name": "kitchen car DOZO",
-    "location": "",
-    "date": "2026-10-30",
-    "start_time": "11:00",
-    "end_time": "17:00",
-    "business_hours": "11:00〜17:00",
-    "headline": "ホットサンド （ハムエッグチーズ）",
-    "url": "https://schedule.mellow.jp/ss_web/shops/RoSVpz"
   },
   {
     "id": "5gSVA6",
