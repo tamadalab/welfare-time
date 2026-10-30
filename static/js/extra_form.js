@@ -30,14 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     let view = 'grid';
 
-    const today = () => new Date().toLocaleDateString('sv-SE');
+    const today = () => new Date().toLocaleDateString('sv-SE', {
+        timeZone: 'Asia/Tokyo'
+    });
     const escapeHtml = (s) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const toMinutes = (hhmm) => { const [h, m] = hhmm.split(':').map(Number); return h * 60 + m; };
 
     function addDays(dateStr, days) {
-        const d = new Date(dateStr + 'T00:00:00');
-        d.setDate(d.getDate() + days);
-        return d.toLocaleDateString('sv-SE');
+        const [year, month, day] = dateStr.split('-').map(Number);
+        const d = new Date(Date.UTC(year, month - 1, day));
+
+        d.setUTCDate(d.getUTCDate() + days);
+
+        return d.toISOString().slice(0, 10);
     }
 
     // --- 営業する日の行 ---
