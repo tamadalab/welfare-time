@@ -6,7 +6,9 @@
             <i class="bi bi-github"></i> GitHub
         </a>
         <span class="hidden md:inline text-slate-200 dark:text-slate-700">|</span>
-        <a href="{{ "help/privacy/" | relURL }}" class="text-ksu dark:text-blue-400 hover:underline">プライバシーポリシー</a>
+        <a href="{{ "help/privacy/" | relURL }}" class="text-ksu dark:text-blue-400 hover:underline">
+            <i class="bi bi-lock"></i> プライバシーポリシー
+        </a>
         {{/* バージョンは package.json を唯一の定義とする。最終更新日時とビルドメタデータはビルド時に Justfile が渡す。
              リリースのあとにコードを変更していれば、最後に変更したコミットのハッシュ値を v0.4.1+2335122 の形で付ける */}}
         {{- $version := (os.ReadFile "package.json" | transform.Unmarshal).version }}
