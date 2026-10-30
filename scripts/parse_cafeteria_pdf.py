@@ -24,16 +24,8 @@ def squash_field(x):
     return x
 
 def parse_pdf_to_json(input_path, output_path=None):
-    # PDFの更新日時を確認
-    if os.path.exists(input_path):
-        pdf_mtime = os.path.getmtime(input_path)
-    else:
+    if not os.path.exists(input_path):
         raise FileNotFoundError(f"Input file not found: {input_path}")
-    
-    # 既にJSONが存在し、かつPDFの方が古い場合はスキップ
-    if output_path and os.path.exists(output_path) and os.path.getmtime(output_path) >= pdf_mtime:
-        print(f"Skipping (not modified): {input_path}")
-        return
 
     # ファイル名から年月を抽出
     match = re.search(r"(\d{4})_(\d{2})", Path(input_path).stem)
