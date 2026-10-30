@@ -109,6 +109,8 @@
     to { transform: scale(1); opacity: 1; }
 }
 .animate-in {
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
     animation-fill-mode: both;
 }
 .fade-in {
