@@ -509,6 +509,7 @@ document.querySelector('#map-wrapper img')?.addEventListener('load', updateOverl
 const targetDateStr = getTargetDateStr();
 document.querySelectorAll('nav a').forEach(a => {
     const url = new URL(a.href, window.location.origin);
+    if (url.origin !== window.location.origin) return;
     url.searchParams.set('date', targetDateStr);
     a.href = url.toString();
     
