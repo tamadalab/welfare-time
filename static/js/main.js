@@ -20,14 +20,20 @@ function getTargetDateStr() {
     const urlParams = new URLSearchParams(window.location.search);
     let dateStr = urlParams.get('date');
     if (!dateStr || dateStr === 'today') {
-        dateStr = new Date().toLocaleDateString('sv-SE');
+        dateStr = todayJst();
     }
     return dateStr;
 }
 
+function todayJst() {
+    return new Date().toLocaleDateString('sv-SE', {
+        timeZone: 'Asia/Tokyo'
+    });
+}
+
 function reloadPage() {
     const targetDateStr = getTargetDateStr();
-    const realWorldToday = new Date().toLocaleDateString('sv-SE');
+    const realWorldToday = todayJst();
     if (targetDateStr === realWorldToday) {
         window.location.search = '';
     } else {
@@ -38,12 +44,18 @@ function reloadPage() {
 function getShopStatus(startTime, endTime, targetDateStr) {
     const closedStatus = { label: '休業', class: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' };
     if (!startTime || !endTime || startTime === '00:00') return closedStatus;
-    const now = new Date();
-    const todayStr = now.toLocaleDateString('sv-SE');
+    const todayStr = todayJst();
+
+    const nowTime = new Date().toLocaleTimeString('en-GB', {
+        timeZone: 'Asia/Tokyo',
+        hour12: false
+    });
+
+    const [hours, minutes] = nowTime.split(':').map(Number);
     if (targetDateStr < todayStr) return { label: LABE_CLOSED, class: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' };
     if (targetDateStr > todayStr) return { label: LABE_PREPARING, class: 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' };
 
-    const nowTotal = now.getHours() * 60 + now.getMinutes();
+    const nowTotal = hours * 60 + minutes;
     const [sh, sm] = startTime.split(':').map(Number);
     const [eh, em] = endTime.split(':').map(Number);
     if (nowTotal < (sh*60+sm)) return { label: LABE_PREPARING, class: 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' };
@@ -69,26 +81,33 @@ function setElementDisplay(id, display) {
 
 async function fetchData() {
     const targetDateStr = getTargetDateStr();
-    const dateObj = new Date(targetDateStr);
-    const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][dateObj.getDay()];
+
+    const [year, month, day] = targetDateStr.split('-').map(Number);
+    const dateObj = new Date(Date.UTC(year, month - 1, day));
+
+    const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][dateObj.getUTCDay()];
     
     updateElementText('current-date-display', `${targetDateStr} (${dayOfWeek})`);
     setElementDisplay('loading-overlay', 'flex');
     
-    const current = new Date(targetDateStr);
-    const prev = new Date(current); prev.setDate(prev.getDate() - 1);
-    const next = new Date(current); next.setDate(next.getDate() + 1);
+    const current = new Date(Date.UTC(year, month - 1, day));
+
+    const prev = new Date(current);
+    prev.setUTCDate(prev.getUTCDate() - 1);
+
+    const next = new Date(current);
+    next.setUTCDate(next.getUTCDate() + 1);
     
     // 日付の移動のボタンは、PC の日付ナビとスマートフォンの操作バーに1組ずつあるので、両方に設定する
     document.querySelectorAll('[data-action="prev-day"]').forEach(btn => {
-        btn.onclick = () => window.location.search = "date=" + prev.toLocaleDateString('sv-SE');
+        btn.onclick = () => window.location.search = "date=" + prev.toISOString().slice(0, 10);
     });
     document.querySelectorAll('[data-action="next-day"]').forEach(btn => {
-        btn.onclick = () => window.location.search = "date=" + next.toLocaleDateString('sv-SE');
+        btn.onclick = () => window.location.search = "date=" + next.toISOString().slice(0, 10);
     });
     document.querySelectorAll('[data-action="today"]').forEach(btn => {
         btn.onclick = () => window.location.search = '';
-        btn.disabled = (targetDateStr === new Date().toLocaleDateString('sv-SE'));
+        btn.disabled = (targetDateStr === todayJst());
     });
 
     try {
