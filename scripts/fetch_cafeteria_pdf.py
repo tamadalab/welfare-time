@@ -14,7 +14,7 @@ JST = timezone(timedelta(hours=9), "JST")
 
 def load_metadata(metadata_file):
     if os.path.exists(metadata_file):
-        with open(metadata_file, "r") as f:
+        with open(metadata_file, "r", encoding="utf-8") as f:
             try:
                 return json.load(f)
             except json.JSONDecodeError:
@@ -22,7 +22,7 @@ def load_metadata(metadata_file):
     return {}
 
 def save_metadata(metadata, metadata_file):
-    with open(metadata_file, "w") as f:
+    with open(metadata_file, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
 
 def get_month_from_pdf(pdf_path):
@@ -58,14 +58,14 @@ def main():
     html_content = ""
     base_url = args.url
     if args.html:
-        with open(args.html, "r") as f:
+        with open(args.html, "r", encoding="utf-8") as f:
             html_content = f.read()
     else:
         response = requests.get(args.url)
         html_content = response.text
 
     if args.save_html:
-        with open(args.save_html, "w") as f:
+        with open(args.save_html, "w", encoding="utf-8") as f:
             f.write(html_content)
 
     soup = BeautifulSoup(html_content, "html.parser")
