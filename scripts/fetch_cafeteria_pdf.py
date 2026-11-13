@@ -7,7 +7,6 @@ import pdfplumber
 import re
 import unicodedata
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
 
 # Define timezones
 JST = timezone(timedelta(hours=9), "JST")
