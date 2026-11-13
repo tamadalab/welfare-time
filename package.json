@@ -2,17 +2,12 @@
   "name": "welfare-time",
   "version": "0.4.1",
   "description": "現代の大学生活のための、福利厚生の時間と情報ナビ（Welfare Time & Information for Modern Education）です。",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tamadalab/welfare-time.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/tamadalab/welfare-time/issues"

@@ -64,8 +64,8 @@ const Filter = {
             const div = document.createElement('div');
             div.className = 'flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer transition-colors';
             div.innerHTML = `
-                <input class="w-4 h-4 text-ksu border-slate-300 rounded focus:ring-ksu dark:border-slate-600 dark:bg-slate-700 filter-checkbox" type="checkbox" value="${cat}" id="filter-${cat}" ${isChecked ? 'checked' : ''}>
-                <label class="text-sm text-slate-600 dark:text-slate-300 cursor-pointer flex-1" for="filter-${cat}">${cat}</label>`;
+                <input class="w-4 h-4 text-ksu border-slate-300 rounded focus:ring-ksu dark:border-slate-600 dark:bg-slate-700 filter-checkbox" type="checkbox" value="${escapeHtml(cat)}" id="filter-${escapeHtml(cat)}" ${isChecked ? 'checked' : ''}>
+                <label class="text-sm text-slate-600 dark:text-slate-300 cursor-pointer flex-1" for="filter-${escapeHtml(cat)}">${escapeHtml(cat)}</label>`;
             body.appendChild(div);
             
             div.querySelector('input').addEventListener('change', (e) => {

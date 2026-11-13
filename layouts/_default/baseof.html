@@ -90,6 +90,28 @@
                 <button type="button" data-modal-close class="w-full px-4 py-2 text-sm font-medium bg-ksu text-white hover:bg-ksu/90 rounded-lg transition-colors">閉じる</button>
             </div>
         </div>
+
+        <!-- QR Code Modal -->
+        <div id="qrModal" class="hidden w-full max-w-md bg-white dark:bg-slate-800 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div class="px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                <h5 class="text-lg font-bold">このサイトの QR コード</h5>
+                <button type="button" data-modal-close class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                    <i class="bi bi-x-lg text-xl"></i>
+                </button>
+            </div>
+            <div class="px-6 py-6 flex flex-col items-center gap-4">
+                <div class="bg-white p-4 rounded-lg">
+                    <img
+                        src="{{ "assets/qr.svg" | relURL }}"
+                        alt="Welfare TIME の QR コード"
+                        class="block w-64 h-64 object-contain">
+                </div>
+                <p class="text-sm text-center text-slate-700 dark:text-slate-300 break-all">{{ site.BaseURL }}</p>
+            </div>
+            <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-700">
+                <button type="button" data-modal-close class="w-full px-4 py-2 text-sm font-medium bg-ksu text-white hover:bg-ksu/90 rounded-lg transition-colors">閉じる</button>
+            </div>
+        </div>
     </div>
 
     <!-- Loading Overlay -->

@@ -61,7 +61,8 @@ def main():
         with open(args.html, "r") as f:
             html_content = f.read()
     else:
-        response = requests.get(args.url)
+        response = requests.get(args.url, timeout=30)
+        response.raise_for_status()
         html_content = response.text
 
     if args.save_html:
@@ -84,11 +85,13 @@ def main():
     metadata = load_metadata(metadata_file)
     
     for pdf_url in pdf_links:
-        head = requests.head(pdf_url)
+        head = requests.head(pdf_url, timeout=30)
+        head.raise_for_status()
         last_modified = head.headers.get("Last-Modified")
         etag = head.headers.get("ETag")
         
-        res = requests.get(pdf_url)
+        res = requests.get(pdf_url, timeout=30)
+        res.raise_for_status()
         temp_path = os.path.join(daily_dir, "temp.pdf")
         with open(temp_path, "wb") as f:
             f.write(res.content)

@@ -27,7 +27,7 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Setup Hugo
+      - name: Hugo をセットアップする
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.168.0'
@@ -36,7 +36,7 @@ jobs:
       - name: just をセットアップする
         uses: extractions/setup-just@v4
 
-      - name: Setup Node
+      - name: Node をセットアップする
         uses: actions/setup-node@v6
         with:
           node-version: '26'
@@ -57,8 +57,7 @@ jobs:
           just parse_kitchencar
 
       - name: APIデータを生成する
-        run:
-          just generate
+        run: just generate
 
       - name: 入力データをmainにコミットする
         run: |
@@ -77,8 +76,7 @@ jobs:
           git push origin HEAD:main
 
       - name: NPMパッケージをインストールする
-        run:
-          npm ci
+        run: npm ci
 
       - name: gh-pagesブランチにデプロイする
         run: |
@@ -97,7 +95,7 @@ jobs:
 
           just build_html
 
-      - name: commit and push changes
+      - name: サイトをgh-pagesにコミットしてpushする
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

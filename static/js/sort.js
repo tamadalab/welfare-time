@@ -11,14 +11,20 @@ const Sort = {
      * Load sort preference from localStorage
      */
     load() {
-        this.current = localStorage.getItem('ksu-harapeco-sort') || 'status';
+        // 旧キーに保存された値を、新しいキーへ引き継ぐ
+        const legacy = localStorage.getItem('ksu-harapeco-sort');
+        if (localStorage.getItem('welfare-time-sort') === null && legacy !== null) {
+            localStorage.setItem('welfare-time-sort', legacy);
+            localStorage.removeItem('ksu-harapeco-sort');
+        }
+        this.current = localStorage.getItem('welfare-time-sort') || 'status';
     },
 
     /**
      * Save sort preference to localStorage
      */
     save() {
-        localStorage.setItem('ksu-harapeco-sort', this.current);
+        localStorage.setItem('welfare-time-sort', this.current);
     },
 
     /**

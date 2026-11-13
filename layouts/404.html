@@ -1,0 +1,9 @@
+  {{ define "main" }}
+      <article class="prose dark:prose-invert max-w-none">
+          <h1>ページが見つかりませんでした</h1>
+          <ul>
+              <li><a href="{{ "" | relURL }}">トップページへ戻る</a></li>
+              <li><a href="{{ "help/" | relURL }}">ヘルプ</a></li>
+          </ul>
+      </article>
+  {{ end }}

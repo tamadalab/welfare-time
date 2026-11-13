@@ -1474,6 +1474,17 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/pMSXgz"
   },
   {
+    "id": "RoSVpz",
+    "name": "kitchen car DOZO",
+    "location": "",
+    "date": "2026-10-30",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "ホットサンド （ハムエッグチーズ）",
+    "url": "https://schedule.mellow.jp/ss_web/shops/RoSVpz"
+  },
+  {
     "id": "EpSrJN",
     "name": "Lo Splendore",
     "location": "",
@@ -1505,6 +1516,17 @@
     "business_hours": "11:00〜17:00",
     "headline": "あいがけカレー",
     "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg"
+  },
+  {
+    "id": "5gSVA6",
+    "name": "銀座六丁目、フライの家。京都店",
+    "location": "",
+    "date": "2026-11-06",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "チキンチーズカツライスバーガー",
+    "url": "https://schedule.mellow.jp/ss_web/shops/5gSVA6"
   },
   {
     "id": "dqSe1b",
@@ -1566,6 +1588,127 @@
     "name": "Panda Kitchen",
     "location": "",
     "date": "2026-11-11",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "クロッフル",
+    "url": "https://schedule.mellow.jp/ss_web/shops/vmSb9R"
+  },
+  {
+    "id": "EpSrJN",
+    "name": "Lo Splendore",
+    "location": "",
+    "date": "2026-11-12",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "生パスタ ペペロンチーノ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN"
+  },
+  {
+    "id": "Z7SXr3",
+    "name": "Charubo",
+    "location": "",
+    "date": "2026-11-12",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "アサイーボウル ミニ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/Z7SXr3"
+  },
+  {
+    "id": "vmSoDg",
+    "name": "なかむーん家",
+    "location": "",
+    "date": "2026-11-13",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "あいがけカレー",
+    "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg"
+  },
+  {
+    "id": "dqSe1b",
+    "name": "メロンパンみのり",
+    "location": "",
+    "date": "2026-11-16",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "メロンパンみのり",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b"
+  },
+  {
+    "id": "2ZSvWJ",
+    "name": "Xingfukitchen",
+    "location": "",
+    "date": "2026-11-16",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "タルタル唐揚げ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/2ZSvWJ"
+  },
+  {
+    "id": "V2Sbq5",
+    "name": "kaka男cafe",
+    "location": "",
+    "date": "2026-11-17",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "クレープ各種",
+    "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbq5"
+  },
+  {
+    "id": "dqSeXG",
+    "name": "京タコス",
+    "location": "",
+    "date": "2026-11-17",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "お肉たっぷりタコライス",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
+  },
+  {
+    "id": "aASDGZ",
+    "name": "ホーのおうち",
+    "location": "",
+    "date": "2026-11-18",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "ホーのミートソースコロッケ丼",
+    "url": "https://schedule.mellow.jp/ss_web/shops/aASDGZ"
+  },
+  {
+    "id": "EpSrJN",
+    "name": "Lo Splendore",
+    "location": "",
+    "date": "2026-11-19",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "生パスタ ペペロンチーノ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN"
+  },
+  {
+    "id": "Z7SXr3",
+    "name": "Charubo",
+    "location": "",
+    "date": "2026-11-19",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "アサイーボウル ミニ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/Z7SXr3"
+  },
+  {
+    "id": "vmSb9R",
+    "name": "Panda Kitchen",
+    "location": "",
+    "date": "2026-11-25",
     "start_time": "11:00",
     "end_time": "17:00",
     "business_hours": "11:00〜17:00",
@@ -1694,26 +1837,81 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
   },
   {
-    "id": "RoSVpz",
-    "name": "kitchen car DOZO",
+    "id": "vmSoDg",
+    "name": "なかむーん家",
     "location": "",
-    "date": "2026-10-30",
+    "date": "2027-01-06",
     "start_time": "11:00",
     "end_time": "17:00",
     "business_hours": "11:00〜17:00",
-    "headline": "ホットサンド （ハムエッグチーズ）",
-    "url": "https://schedule.mellow.jp/ss_web/shops/RoSVpz"
+    "headline": "あいがけカレー",
+    "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg"
   },
   {
-    "id": "5gSVA6",
-    "name": "銀座六丁目、フライの家。京都店",
+    "id": "EpSrJN",
+    "name": "Lo Splendore",
     "location": "",
-    "date": "2026-11-06",
+    "date": "2027-01-07",
     "start_time": "11:00",
     "end_time": "17:00",
     "business_hours": "11:00〜17:00",
-    "headline": "チキンチーズカツライスバーガー",
-    "url": "https://schedule.mellow.jp/ss_web/shops/5gSVA6"
+    "headline": "生パスタ ペペロンチーノ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN"
+  },
+  {
+    "id": "pMSXgz",
+    "name": "SKY KITCHEN",
+    "location": "",
+    "date": "2027-01-07",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "照り焼きチキン",
+    "url": "https://schedule.mellow.jp/ss_web/shops/pMSXgz"
+  },
+  {
+    "id": "Z7S1R",
+    "name": "もんきち",
+    "location": "",
+    "date": "2027-01-12",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "クラシックケチャップオムライス",
+    "url": "https://schedule.mellow.jp/ss_web/shops/Z7S1R"
+  },
+  {
+    "id": "Z7SXr3",
+    "name": "Charubo",
+    "location": "",
+    "date": "2027-01-12",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "アサイーボウル ミニ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/Z7SXr3"
+  },
+  {
+    "id": "dqSeXG",
+    "name": "京タコス",
+    "location": "",
+    "date": "2027-01-18",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "お肉たっぷりタコライス",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
+  },
+  {
+    "id": "dqSe1b",
+    "name": "メロンパンみのり",
+    "location": "",
+    "date": "2027-01-18",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "メロンパンみのり",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b"
   },
   {
     "id": "7ASDmX",

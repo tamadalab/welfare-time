@@ -5,6 +5,10 @@ type: "help"
 
 本サイトはホーム画面に追加することで、アプリのように利用できます。
 
+スマートフォンのカメラで読み取ると、このサイトを開けます。
+
+{{< qr >}}
+
 ### iPhone (Safari)
 
 - [iPhoneのSafariでWebサイトをアプリにする](https://support.apple.com/ja-jp/guide/iphone/iphea86e5236/ios)（[iPhoneユーザガイド](https://support.apple.com/ja-jp/guide/iphone/welcome/ios)）をご参照ください。

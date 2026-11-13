@@ -31,3 +31,10 @@ document.addEventListener('click', (e) => {
         Modal.close();
     }
 });
+
+// Esc キーを押したときに、開いているモーダルを閉じる
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && Modal.backdrop && !Modal.backdrop.classList.contains('hidden')) {
+        Modal.close();
+    }
+});
