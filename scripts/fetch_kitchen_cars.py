@@ -3,12 +3,12 @@ import argparse
 import sys
 from playwright.async_api import async_playwright
 
-async def fetch_kitchen_cars(output_path=None):
+DEFAULT_URL = "https://schedule.mellow.jp/ss_web/markets/KqTl8N"
+
+async def fetch_kitchen_cars(output_path=None, url=DEFAULT_URL):
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page()
-        
-        url = "https://schedule.mellow.jp/ss_web/markets/KqTl8N"
         
         # JSレンダリングを完了させるために十分な時間を待機
         await page.goto(url)
@@ -27,7 +27,8 @@ async def fetch_kitchen_cars(output_path=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Fetch kitchen car schedule HTML")
+    parser.add_argument("-u", "--url", default=DEFAULT_URL,help="URL of kitchen car schedule page")
     parser.add_argument("-o", "--output", help="Output file path (optional, otherwise stdout)")
     args = parser.parse_args()
     
-    asyncio.run(fetch_kitchen_cars(args.output))
+    asyncio.run(fetch_kitchen_cars(args.output, url=args.url))
