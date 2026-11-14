@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>{{ .Site.Title }} | {{ .Title }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" integrity="sha256-GzSkJVLJbxDk36qko2cnawOGiqz/Y8GsQv/jMTUrx1Q=" crossorigin="anonymous">
     {{/* 自前の CSS と JavaScript には、中身のハッシュ値を付けて読み込む（partials/asset_url.html） */}}
     <link rel="stylesheet" href="{{ partial "asset_url.html" "css/compiled.css" }}">
     {{ partial "google_analytics.html" . }}
@@ -122,8 +122,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js" integrity="sha256-Huqxy3eUcaCwqqk92RwusapTfWlvAasF6p2rxV6FJaE=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ja.js" integrity="sha256-us400PA8+wpkgAkYwnKn7ueJbkk00UuwAcqrHqLGQJw=" crossorigin="anonymous"></script>
     <script>window.BASE_PATH = "{{ "" | relURL }}".replace(/\/$/, "");</script>
     <script src="{{ partial "asset_url.html" "js/filter.js" }}"></script>
     <script src="{{ partial "asset_url.html" "js/sort.js" }}"></script>
