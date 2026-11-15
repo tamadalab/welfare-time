@@ -11,6 +11,8 @@
     {{ partial "google_analytics.html" . }}
     {{ partial "favicons.html" . }}
     <link rel="stylesheet" href="{{ partial "asset_url.html" "assets/style.css" }}">
+    {{/* テーマは描画の前に適用する。ちらつきを防ぐため、defer も async も付けない */}}
+    <script src="{{ partial "asset_url.html" "js/theme.js" }}"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-200">
     <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">

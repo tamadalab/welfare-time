@@ -361,23 +361,24 @@ function renderProvenance(sources) {
 }
 
 // --- Theme Switcher ---
+// テーマの最初の適用（<html> に dark クラスを付ける処理）は theme.js が <head> で行う。
+// ここでは、ボタンのアイコンの切り替えと、クリック時の処理だけを行う。
 const themeBtn = document.getElementById('btn-theme');
 if (themeBtn) {
-    const applyTheme = (theme) => {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+    const isDark = () => document.documentElement.classList.contains('dark');
+    const updateIcon = () => {
         const icon = themeBtn.querySelector('i');
         if (icon) {
-            icon.className = theme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            icon.className = isDark() ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
         }
-        localStorage.setItem('theme', theme);
     };
-    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    applyTheme(savedTheme);
-    themeBtn.onclick = () => applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
+    updateIcon();
+    themeBtn.onclick = () => {
+        const theme = isDark() ? 'light' : 'dark';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        localStorage.setItem('theme', theme);
+        updateIcon();
+    };
 }
 
 // --- Reload Button ---
