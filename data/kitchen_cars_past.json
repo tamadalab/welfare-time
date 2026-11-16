@@ -1745,8 +1745,30 @@
     "start_time": "11:00",
     "end_time": "17:00",
     "business_hours": "11:00〜17:00",
-    "headline": "レモネードソーダ",
+    "headline": "トンカツ弁当",
     "url": "https://schedule.mellow.jp/ss_web/shops/evSkPV"
+  },
+  {
+    "id": "dqSe1b",
+    "name": "メロンパンみのり",
+    "location": "",
+    "date": "2026-11-30",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "メロンパンみのり",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b"
+  },
+  {
+    "id": "2ZSvWJ",
+    "name": "Xingfukitchen",
+    "location": "",
+    "date": "2026-11-30",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "タルタル唐揚げ",
+    "url": "https://schedule.mellow.jp/ss_web/shops/2ZSvWJ"
   },
   {
     "id": "V2Sbq5",
@@ -1822,7 +1844,7 @@
     "start_time": "11:00",
     "end_time": "17:00",
     "business_hours": "11:00〜17:00",
-    "headline": "ハニーマスタード弁当",
+    "headline": "トンカツ弁当",
     "url": "https://schedule.mellow.jp/ss_web/shops/evSkPV"
   },
   {
