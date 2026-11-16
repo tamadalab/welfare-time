@@ -71,8 +71,19 @@ Welfare TIME のデータを活用するためのAPIエンドポイントです�
   "sources": [
     {
       "name": "2026_05.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_05.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_05.pdf",
+      "month": "2026-05",
+      "last_modified": "2026-05-01T10:15:00+09:00",
+      "fetched_at": "2026-05-02T07:03:12+09:00"
     }
   ]
 }
 ```
+
+`sources` は、取得済みの食堂の営業カレンダー（PDF）の一覧です。
+
+- `month`：その PDF が対象とする月（`YYYY-MM`）。ファイル名から分からないときは `null` です。
+- `last_modified`：大学サイトで PDF が更新された日時。分からないときは `null` です。
+- `fetched_at`：このサイトが PDF を取得した日時。
+
+ある月の食堂の営業予定が公開済みかどうかは、`month` で判定してください。日付ごとの API の `sources` は、その日に営業の予定がある PDF だけを返すので、日曜日や一斉休業の日にも空になります。

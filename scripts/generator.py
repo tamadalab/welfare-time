@@ -4,6 +4,7 @@ import argparse
 import re
 import unicodedata
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 # Define timezones
@@ -460,13 +461,43 @@ def write_shops_api(schedule_map, output_dir):
     save_json(shops_index, os.path.join(api_shops_dir, "index.json"))
     return all_shops
 
+def build_status_source(filename, info, base_url):
+    """Build one entry of sources in api/status from the PDF metadata.
+
+    month tells which month the PDF covers, so that the frontend can tell
+    "not published yet" from "closed all day" (a closed day has no source either).
+    last_modified comes as an HTTP date and fetched_at is in UTC for older PDFs,
+    so both are converted to JST like the other timestamps.
+    """
+    m = re.fullmatch(r"(\d{4})_(\d{2})\.pdf", filename)
+    info = info if isinstance(info, dict) else {}
+    last_modified = None
+    if info.get("last-modified"):
+        try:
+            last_modified = parsedate_to_datetime(info["last-modified"]).astimezone(JST).isoformat()
+        except (TypeError, ValueError):
+            pass
+    fetched_at = info.get("fetched_at")
+    if fetched_at:
+        try:
+            fetched_at = datetime.fromisoformat(fetched_at).astimezone(JST).isoformat()
+        except (TypeError, ValueError):
+            pass
+    return {
+        "name": filename,
+        "url": f"{base_url}/daily/{filename}",
+        "month": f"{m.group(1)}-{m.group(2)}" if m else None,
+        "last_modified": last_modified,
+        "fetched_at": fetched_at,
+    }
+
 def write_status_api(schedule_map, shop_count, metadata, base_url, output_dir, last_updated):
     """Write api/status, the only place that carries the build timestamp."""
     dates = sorted(schedule_map.keys())
     global_sources = []
     if isinstance(metadata, dict):
         for filename, info in metadata.items():
-            global_sources.append({"name": filename, "url": f"{base_url}/daily/{filename}"})
+            global_sources.append(build_status_source(filename, info, base_url))
 
     save_json({
         "last_updated": last_updated,

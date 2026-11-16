@@ -4,7 +4,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from generator import (merge_kitchen_car_archive, add_cafeteria_schedules,
-                       load_extra_schedules, add_extra_schedules)
+                       load_extra_schedules, add_extra_schedules, build_status_source)
 
 TODAY = "2026-08-04"
 
@@ -202,11 +202,45 @@ def test_extra_schedules(tmp_dir):
 
     print("Regression test passed: extra shops are loaded, replace by (id, date) and skip broken input.")
 
+def test_status_sources():
+    """/api/status の sources に、PDF がカバーする月と日付を出す。
+
+    フロントエンドは month で「PDF がまだ公開されていない」を判定する。
+    日ごとの sources は休業日にも空になるので、その判定には使えない。
+    """
+    failures = []
+    base_url = "https://example.com/welfare-time"
+
+    info = {"last-modified": "Fri, 02 Oct 2026 03:37:22 GMT", "fetched_at": "2026-10-04T07:54:20.524518+09:00"}
+    s = build_status_source("2026_10.pdf", info, base_url)
+    check(failures, s["url"] == f"{base_url}/daily/2026_10.pdf", f"The URL must be absolute, but got {s['url']!r}")
+    check(failures, s["month"] == "2026-10", f"The month must come from the file name, but got {s['month']!r}")
+    check(failures, s["last_modified"] == "2026-10-02T12:37:22+09:00",
+          f"last-modified must be converted to JST, but got {s['last_modified']!r}")
+    check(failures, s["fetched_at"] == info["fetched_at"], f"fetched_at in JST must be kept, but got {s['fetched_at']!r}")
+    s = build_status_source("2026_05.pdf", {"fetched_at": "2026-05-31T02:49:38.393689Z"}, base_url)
+    check(failures, s["fetched_at"] == "2026-05-31T11:49:38.393689+09:00",
+          f"fetched_at in UTC must be converted to JST, but got {s['fetched_at']!r}")
+
+    # 想定外のファイル名や、欠けた・壊れたメタデータでも、生成を止めない
+    s = build_status_source("menu.pdf", {"last-modified": "broken"}, base_url)
+    check(failures, s["month"] is None, f"An unknown file name must have no month, but got {s['month']!r}")
+    check(failures, s["last_modified"] is None, f"A broken date must be None, but got {s['last_modified']!r}")
+    s = build_status_source("2026_11.pdf", None, base_url)
+    check(failures, s["last_modified"] is None and s["fetched_at"] is None,
+          "Missing metadata must give None for the dates")
+
+    if failures:
+        raise AssertionError("\n  - " + "\n  - ".join(failures))
+
+    print("Regression test passed: status sources carry the month and the dates of each PDF.")
+
 if __name__ == "__main__":
     try:
         test_merge_kitchen_car_archive()
         test_unresolved_shops(os.path.join("tmp", "test_generator_cafeterias"))
         test_extra_schedules(os.path.join("tmp", "test_generator_extra"))
+        test_status_sources()
     except Exception as e:
         print(f"Test failed: {e}")
         exit(1)
