@@ -19,6 +19,7 @@
   - 例外は店舗一覧です。`api/shops` は店舗ごとのファイル（`api/shops/{shop-id}`）を置くディレクトリなので、一覧は `api/shops/index.json` に置きます。GitHub Pages では `/api/shops/` でこのファイルが返り、`/api/shops` は `/api/shops/` にリダイレクトされます。
 - **施設は1つの配列にまとめます。** 日付ごとの営業情報は、食堂もキッチンカーも `facilities` の1つの配列で返し、種類は `category` で区別します（v0.2.0 で `cafeterias` と `kitchen_cars` から統合しました）。
 - **URL は絶対URLで返します。** 取得元のURL（`sources[].url`）など、APIが返すURLはベースURLを前置した絶対URLにします。相対URLでは、利用者がAPIのURLに対して解決すると存在しないURLになります。APIリファレンスの例も絶対URLで書きます。
+- **PDF の公開の有無は月で判定します。** 日付ごとのAPIの `sources` は、その日に営業の行がある PDF だけを返すので、休業日にも空になります。そのため、食堂の PDF が公開済みかどうかは、`/api/status` の `sources[].month` で判定します。
 - **意味のない差分を出しません。** 日付ごとのAPIには生成時刻を入れません。毎朝すべてのファイルが書き換わるのを避けるためです。更新時刻は `/api/status` で返します。
 - **生成されなくなったファイルを残しません。** デプロイのたびに `public/api` を削除して作り直します。配信中のファイルとの差は `just stale_api` で確認できます。
 - **形式を変えるときはバージョンを上げます。** 利用者の対応が必要な変更は、[CHANGELOG.md](../../CHANGELOG.md) に明記します。
