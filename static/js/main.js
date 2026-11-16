@@ -4,6 +4,9 @@ const STATUS_API = `${BASE_PATH}/api/status`;
 const LABEL_NOW_OPEN = '🟢 営業中';
 const LABEL_PREPARING = '🟡 準備中';
 const LABEL_CLOSED = '🔵 営業終了';
+// 毎朝の自動更新が、この日数以上止まっていたら利用者に知らせる。
+// 休日や GitHub Actions の遅れで1日飛ぶことがあるので、余裕をもたせている。
+const STALE_DAYS = 7;
 
 /**
  * HTML 特殊文字をエスケープする。
@@ -108,6 +111,26 @@ function setElementDisplay(id, display) {
     }
 }
 
+/**
+ * 毎朝の自動更新が止まっているときに、最終更新を赤字にし、注意書きを出す。
+ * 更新に失敗すると公開まで進まないので、last_updated は最後に成功した時刻のまま残る。
+ * @param {string} lastUpdated - /api/status の last_updated
+ */
+function showStaleNotice(lastUpdated) {
+    const days = Math.floor((Date.now() - new Date(lastUpdated).getTime()) / 86400000);
+    // 日時を読めないとき（NaN）は、止まっているとは判定しない
+    if (!(days >= STALE_DAYS)) return;
+
+    const statusInfo = document.getElementById('status-info');
+    if (statusInfo) {
+        statusInfo.classList.remove('text-slate-400', 'dark:text-slate-500', 'italic');
+        statusInfo.classList.add('text-red-600', 'dark:text-red-400', 'font-bold');
+    }
+    // スマートフォンでは右上の最終更新が小さく見落とされやすいので、一覧の上にも出す
+    updateElementText('stale-notice-text', `自動更新が${days}日間止まっています。最新の営業情報は公式サイトで確認してください。`);
+    setElementDisplay('stale-notice', 'flex');
+}
+
 async function fetchData() {
     const targetDateStr = getTargetDateStr();
 
@@ -193,6 +216,7 @@ async function fetchData() {
                 minute: '2-digit',
             });
             updateElementText('status-info', '最終更新：' + updated);
+            showStaleNotice(status.last_updated);
             updateElementText('header-data-range', '提供範囲: ' + status.data_range.start + ' ～ ' + status.data_range.end);
         }
     } catch (e) {
