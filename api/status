@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16T07:03:51.137525+09:00",
+  "last_updated": "2026-11-17T07:03:57.965132+09:00",
   "timezone": "JST",
   "data_range": {
     "start": "2026-05-01",
@@ -9,31 +9,52 @@
   "sources": [
     {
       "name": "2026_05.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_05.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_05.pdf",
+      "month": "2026-05",
+      "last_modified": "2026-04-30T12:30:23+09:00",
+      "fetched_at": "2026-05-31T11:49:38.393689+09:00"
     },
     {
       "name": "2026_06.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_06.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_06.pdf",
+      "month": "2026-06",
+      "last_modified": "2026-05-25T10:47:55+09:00",
+      "fetched_at": "2026-05-31T11:49:38.835588+09:00"
     },
     {
       "name": "2026_07.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_07.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_07.pdf",
+      "month": "2026-07",
+      "last_modified": "2026-07-01T15:19:08+09:00",
+      "fetched_at": "2026-07-24T07:20:55.225685+09:00"
     },
     {
       "name": "2026_08.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_08.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_08.pdf",
+      "month": "2026-08",
+      "last_modified": "2026-08-26T16:06:19+09:00",
+      "fetched_at": "2026-08-28T09:54:03.062267+09:00"
     },
     {
       "name": "2026_09.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_09.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_09.pdf",
+      "month": "2026-09",
+      "last_modified": "2026-08-27T17:14:40+09:00",
+      "fetched_at": "2026-10-01T07:07:04.850037+09:00"
     },
     {
       "name": "2026_10.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_10.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_10.pdf",
+      "month": "2026-10",
+      "last_modified": "2026-10-02T12:37:22+09:00",
+      "fetched_at": "2026-10-04T07:54:20.524518+09:00"
     },
     {
       "name": "2026_11.pdf",
-      "url": "https://tamadalab.github.io/welfare-time/daily/2026_11.pdf"
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_11.pdf",
+      "month": "2026-11",
+      "last_modified": "2026-11-04T10:36:35+09:00",
+      "fetched_at": "2026-11-05T07:04:01.633895+09:00"
     }
   ]
 }

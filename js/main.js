@@ -4,6 +4,9 @@ const STATUS_API = `${BASE_PATH}/api/status`;
 const LABEL_NOW_OPEN = '🟢 営業中';
 const LABEL_PREPARING = '🟡 準備中';
 const LABEL_CLOSED = '🔵 営業終了';
+// 毎朝の自動更新が、この日数以上止まっていたら利用者に知らせる。
+// 休日や GitHub Actions の遅れで1日飛ぶことがあるので、余裕をもたせている。
+const STALE_DAYS = 7;
 
 /**
  * HTML 特殊文字をエスケープする。
@@ -108,6 +111,51 @@ function setElementDisplay(id, display) {
     }
 }
 
+/**
+ * 毎朝の自動更新が止まっているときに、最終更新を赤字にし、注意書きを出す。
+ * 更新に失敗すると公開まで進まないので、last_updated は最後に成功した時刻のまま残る。
+ * @param {string} lastUpdated - /api/status の last_updated
+ * @returns {boolean} 止まっていると判定したら true
+ */
+function showStaleNotice(lastUpdated) {
+    const days = Math.floor((Date.now() - new Date(lastUpdated).getTime()) / 86400000);
+    // 日時を読めないとき（NaN）は、止まっているとは判定しない
+    if (!(days >= STALE_DAYS)) return false;
+
+    const statusInfo = document.getElementById('status-info');
+    if (statusInfo) {
+        statusInfo.classList.remove('text-slate-400', 'dark:text-slate-500', 'italic');
+        statusInfo.classList.add('text-red-600', 'dark:text-red-400', 'font-bold');
+    }
+    // スマートフォンでは右上の最終更新が小さく見落とされやすいので、一覧の上にも出す
+    updateElementText('stale-notice-text', `自動更新が${days}日間止まっています。最新の営業情報は公式サイトで確認してください。`);
+    setElementDisplay('stale-notice', 'flex');
+    return true;
+}
+
+/**
+ * 表示中の日付の月の食堂の PDF が、大学からまだ公開されていないときに注意書きを出す。
+ * 日ごとの API の sources は休業日（日曜日やお盆の一斉休業など）にも空になるので、
+ * 判定には /api/status の sources の month（PDF がカバーする月）を使う。
+ * @param {string} targetDateStr - 表示中の日付（YYYY-MM-DD）
+ * @param {Array<{month: string}>} statusSources - /api/status の sources
+ */
+function showUnpublishedNotice(targetDateStr, statusSources) {
+    if (!Array.isArray(statusSources)) return;
+    const month = targetDateStr.slice(0, 7);
+    if (statusSources.some(s => s.month === month)) return;
+
+    const thisMonth = todayJst().slice(0, 7);
+    // 過去の月は、これから公開されることはないので出さない（提供範囲より前の日付など）
+    if (month < thisMonth) return;
+    // 今月の PDF がないのは、月初めに大学の公開が遅れているときなので、少し強く知らせる
+    const text = month === thisMonth
+        ? '今月の食堂・ショップの営業予定が、大学からまだ公開されていません。表示しているのは ATM やキッチンカーなどの予定だけなので、食堂・ショップの営業は公式サイトで確認してください。'
+        : 'この月の食堂・ショップの営業予定は、大学からまだ公開されていません。表示しているのは、ATM やキッチンカーなどの予定だけです。';
+    updateElementText('unpublished-notice-text', text);
+    setElementDisplay('unpublished-notice', 'flex');
+}
+
 async function fetchData() {
     const targetDateStr = getTargetDateStr();
 
@@ -147,6 +195,8 @@ async function fetchData() {
         ]);
 
         if (masterRes.ok) master = await masterRes.json();
+        // 情報元のモーダルで PDF の日付を出すのに使うので、先に読んでおく
+        const status = statusRes.ok ? await statusRes.json() : null;
         
         const shopGrid = document.getElementById('shop-grid');
         if (scheduleRes.ok) {
@@ -177,13 +227,12 @@ async function fetchData() {
             // マップの操作は、最初の描画が終わってから一度だけ初期化する。
             // イベントは一覧とマップに委譲するので、描き直すたびに初期化し直す必要はない。
             render(isMapPage ? initMapInteractions : undefined);
-            renderProvenance(currentData.sources);
+            renderProvenance(currentData.sources, status ? status.sources : []);
         } else if (shopGrid) {
             shopGrid.innerHTML = '<div class="col-span-full text-center text-slate-400 py-12">営業予定が見つかりませんでした</div>';
         }
 
-        if (statusRes.ok) {
-            const status = await statusRes.json();
+        if (status) {
             const updated = new Date(status.last_updated).toLocaleString('sv-SE', {
                 timeZone: 'Asia/Tokyo',
                 year: 'numeric',
@@ -193,6 +242,11 @@ async function fetchData() {
                 minute: '2-digit',
             });
             updateElementText('status-info', '最終更新：' + updated);
+            // 自動更新が止まっているときは、大学が公開済みの PDF を取り込めていないことがあるので、
+            // 「まだ公開されていない」とは言えない。止まっていることの注意書きだけを出す。
+            if (!showStaleNotice(status.last_updated)) {
+                showUnpublishedNotice(targetDateStr, status.sources);
+            }
             updateElementText('header-data-range', '提供範囲: ' + status.data_range.start + ' ～ ' + status.data_range.end);
         }
     } catch (e) {
@@ -322,7 +376,12 @@ function render(onRendered) {
     if (onRendered) onRendered();
 }
 
-function renderProvenance(sources) {
+/**
+ * 情報元のモーダルに、取得元へのリンクを並べる。
+ * @param {Array<{name: string, url: string}>} sources - 表示中の日付の sources（日ごとの API）
+ * @param {Array<{name: string, last_modified: ?string}>} statusSources - /api/status の sources。PDF の日付を引くのに使う
+ */
+function renderProvenance(sources, statusSources) {
     const sourceLinks = document.getElementById('source-links');
     if (!sourceLinks) return;
 
@@ -348,13 +407,22 @@ function renderProvenance(sources) {
 
     // 3. Cafeteria PDF Sources
     if (sources && sources.length > 0) {
-        html += sources.map(s => `
+        html += sources.map(s => {
+            const info = (statusSources || []).find(g => g.name === s.name);
+            const modified = info && info.last_modified
+                ? new Date(info.last_modified).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo', month: 'long', day: 'numeric' })
+                : '';
+            return `
             <a href="${escapeHtml(s.url)}" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 text-sm text-slate-600 dark:text-slate-300 transition-colors" target="_blank">
                 <i class="bi bi-file-pdf text-red-500"></i>
-                <span class="flex-1 text-truncate">学食営業カレンダー（${escapeHtml(s.name)}）</span>
+                <span class="flex-1 min-w-0">
+                    <span class="block text-truncate">学食営業カレンダー（${escapeHtml(s.name)}）</span>
+                    ${modified ? `<span class="block text-xs text-slate-400 dark:text-slate-500">大学サイトでの更新：${escapeHtml(modified)}</span>` : ''}
+                </span>
                 <i class="bi bi-box-arrow-up-right text-[10px]"></i>
             </a>
-        `).join('');
+        `;
+        }).join('');
     }
 
     sourceLinks.innerHTML = html;
