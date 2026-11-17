@@ -1727,6 +1727,28 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg"
   },
   {
+    "id": "V2Sbq5",
+    "name": "kaka男cafe",
+    "location": "",
+    "date": "2026-11-24",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "クレープ各種",
+    "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbq5"
+  },
+  {
+    "id": "dqSeXG",
+    "name": "京タコス",
+    "location": "",
+    "date": "2026-11-24",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "お肉たっぷりタコライス",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG"
+  },
+  {
     "id": "vmSb9R",
     "name": "Panda Kitchen",
     "location": "",
@@ -1912,6 +1934,28 @@
     "business_hours": "11:00〜17:00",
     "headline": "照り焼きチキン",
     "url": "https://schedule.mellow.jp/ss_web/shops/pMSXgz"
+  },
+  {
+    "id": "dqSe1b",
+    "name": "メロンパンみのり",
+    "location": "",
+    "date": "2027-01-08",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "メロンパンみのり",
+    "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b"
+  },
+  {
+    "id": "wwS21",
+    "name": "ホットドッグcafe defi",
+    "location": "",
+    "date": "2027-01-08",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "ホットドッグ4種類（カレーキャベツ、オニオンピクルス、チーズサルサ、ソーセージドッグ）",
+    "url": "https://schedule.mellow.jp/ss_web/shops/wwS21"
   },
   {
     "id": "Z7S1R",
