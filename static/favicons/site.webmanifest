@@ -7,5 +7,9 @@
     ],
     "theme_color":"#ffffff",
     "background_color":"#ffffff",
-    "display":"standalone"
+    "display":"standalone",
+    "start_url": "../",
+    "scope": "../",
+    "lang": "ja",
+    "description": "京都産業大学の食堂・ショップ・キッチンカーの営業情報"
 }
