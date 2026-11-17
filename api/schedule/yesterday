@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "timezone": "JST",
   "facilities": [
     {
@@ -255,11 +255,11 @@
       "note": ""
     },
     {
-      "id": "dqSe1b",
-      "name": "メロンパンみのり",
-      "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b",
+      "id": "V2Sbq5",
+      "name": "kaka男cafe",
+      "url": "https://schedule.mellow.jp/ss_web/shops/V2Sbq5",
       "image_url": "",
-      "headline": "メロンパンみのり",
+      "headline": "クレープ各種",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",
@@ -269,11 +269,11 @@
       "note": ""
     },
     {
-      "id": "2ZSvWJ",
-      "name": "Xingfukitchen",
-      "url": "https://schedule.mellow.jp/ss_web/shops/2ZSvWJ",
+      "id": "dqSeXG",
+      "name": "京タコス",
+      "url": "https://schedule.mellow.jp/ss_web/shops/dqSeXG",
       "image_url": "",
-      "headline": "タルタル唐揚げ",
+      "headline": "お肉たっぷりタコライス",
       "location": "大学内指定場所",
       "google_map": "",
       "category": "キッチンカー",
