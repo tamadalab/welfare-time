@@ -1727,6 +1727,17 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg"
   },
   {
+    "id": "5gSVA6",
+    "name": "銀座六丁目、フライの家。京都店",
+    "location": "",
+    "date": "2026-11-20",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "チキンチーズカツライスバーガー",
+    "url": "https://schedule.mellow.jp/ss_web/shops/5gSVA6"
+  },
+  {
     "id": "V2Sbq5",
     "name": "kaka男cafe",
     "location": "",
@@ -1791,6 +1802,17 @@
     "business_hours": "11:00〜17:00",
     "headline": "トンカツ弁当",
     "url": "https://schedule.mellow.jp/ss_web/shops/evSkPV"
+  },
+  {
+    "id": "vmSoDg",
+    "name": "なかむーん家",
+    "location": "",
+    "date": "2026-11-27",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "あいがけカレー",
+    "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg"
   },
   {
     "id": "dqSe1b",
@@ -2022,17 +2044,6 @@
     "business_hours": "11:00〜17:00",
     "headline": "メロンパンみのり",
     "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b"
-  },
-  {
-    "id": "5gSVA6",
-    "name": "銀座六丁目、フライの家。京都店",
-    "location": "",
-    "date": "2026-11-20",
-    "start_time": "11:00",
-    "end_time": "17:00",
-    "business_hours": "11:00〜17:00",
-    "headline": "チキンチーズカツライスバーガー",
-    "url": "https://schedule.mellow.jp/ss_web/shops/5gSVA6"
   },
   {
     "id": "NrSX7p",
