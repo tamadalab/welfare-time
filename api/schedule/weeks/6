@@ -1,11 +1,11 @@
 {
   "week_index": 6,
-  "start_date": "2026-12-28",
-  "end_date": "2027-01-03",
+  "start_date": "2027-01-04",
+  "end_date": "2027-01-10",
   "timezone": "JST",
   "daily_schedules": [
     {
-      "date": "2026-12-28",
+      "date": "2027-01-04",
       "timezone": "JST",
       "facilities": [
         {
@@ -54,7 +54,7 @@
       "sources": []
     },
     {
-      "date": "2026-12-29",
+      "date": "2027-01-05",
       "timezone": "JST",
       "facilities": [
         {
@@ -103,9 +103,23 @@
       "sources": []
     },
     {
-      "date": "2026-12-30",
+      "date": "2027-01-06",
       "timezone": "JST",
       "facilities": [
+        {
+          "id": "vmSoDg",
+          "name": "なかむーん家",
+          "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg",
+          "image_url": "",
+          "headline": "あいがけカレー",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
         {
           "id": "chushin-atm",
           "name": "京都中央信用金庫ATM",
@@ -152,9 +166,37 @@
       "sources": []
     },
     {
-      "date": "2026-12-31",
+      "date": "2027-01-07",
       "timezone": "JST",
       "facilities": [
+        {
+          "id": "EpSrJN",
+          "name": "Lo Splendore",
+          "url": "https://schedule.mellow.jp/ss_web/shops/EpSrJN",
+          "image_url": "",
+          "headline": "生パスタ ペペロンチーノ",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
+        {
+          "id": "pMSXgz",
+          "name": "SKY KITCHEN",
+          "url": "https://schedule.mellow.jp/ss_web/shops/pMSXgz",
+          "image_url": "",
+          "headline": "照り焼きチキン",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
         {
           "id": "chushin-atm",
           "name": "京都中央信用金庫ATM",
@@ -201,9 +243,37 @@
       "sources": []
     },
     {
-      "date": "2027-01-01",
+      "date": "2027-01-08",
       "timezone": "JST",
       "facilities": [
+        {
+          "id": "dqSe1b",
+          "name": "メロンパンみのり",
+          "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b",
+          "image_url": "",
+          "headline": "メロンパンみのり",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
+        {
+          "id": "wwS21",
+          "name": "ホットドッグcafe defi",
+          "url": "https://schedule.mellow.jp/ss_web/shops/wwS21",
+          "image_url": "",
+          "headline": "ホットドッグ4種類（カレーキャベツ、オニオンピクルス、チーズサルサ、ソーセージドッグ）",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
         {
           "id": "chushin-atm",
           "name": "京都中央信用金庫ATM",
@@ -250,7 +320,7 @@
       "sources": []
     },
     {
-      "date": "2027-01-02",
+      "date": "2027-01-09",
       "timezone": "JST",
       "facilities": [
         {
@@ -299,7 +369,7 @@
       "sources": []
     },
     {
-      "date": "2027-01-03",
+      "date": "2027-01-10",
       "timezone": "JST",
       "facilities": [],
       "sources": []

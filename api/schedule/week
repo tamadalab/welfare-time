@@ -1,167 +1,13 @@
 {
   "week_index": 0,
-  "start_date": "2026-11-16",
-  "end_date": "2026-11-22",
+  "start_date": "2026-11-23",
+  "end_date": "2026-11-29",
   "timezone": "JST",
   "daily_schedules": [
     {
-      "date": "2026-11-16",
+      "date": "2026-11-23",
       "timezone": "JST",
       "facilities": [
-        {
-          "id": "101",
-          "name": "やさい食堂 イチマルイチ",
-          "location": "10号館1F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/yasai.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "コンセプトは、「やさいたっぷり・ワシワシ・まいにち」新しい学食誕生。",
-          "start_time": "11:00",
-          "end_time": "14:00",
-          "business_hours": "平日 11:00~15:00",
-          "note": ""
-        },
-        {
-          "id": "fujikatsu",
-          "name": "ふじカツ",
-          "location": "並楽館1F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/fujikatu.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "ボリューム満点！あげたてカツの専門店",
-          "start_time": "11:30",
-          "end_time": "14:00",
-          "business_hours": "平日 11:30~14:00",
-          "note": ""
-        },
-        {
-          "id": "ichibariki",
-          "name": "らーめん壱馬力",
-          "location": "並楽館1F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/ichibariki.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "京都の有名ラーメン店「麺屋しゃかりき」の2号店",
-          "start_time": "11:00",
-          "end_time": "17:00",
-          "business_hours": "平日 11:00~19:00 土 11:00~14:00",
-          "note": ""
-        },
-        {
-          "id": "cosmic-bakery-cafe",
-          "name": "cosmic bakery cafe",
-          "location": "並楽館2F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/bakery.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "約20種類のテイクアウト弁当と種類豊富なパンが揃う",
-          "start_time": "11:30",
-          "end_time": "13:30",
-          "business_hours": "平日 11:30~13:30",
-          "note": ""
-        },
-        {
-          "id": "miyako",
-          "name": "MIYAKO製麺",
-          "location": "並楽館2F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/campus/welfare/miyako/",
-          "google_map": "",
-          "image_url": "",
-          "headline": "店内で製麺する本格的なうどん専門店",
-          "start_time": "11:00",
-          "end_time": "14:00",
-          "business_hours": "平日 11:00~14:00",
-          "note": ""
-        },
-        {
-          "id": "libre",
-          "name": "LIBRE（リブレ）",
-          "location": "並楽館3F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/libre.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "なんでも揃う学内最大のカフェテリアレストラン",
-          "start_time": "11:30",
-          "end_time": "14:00",
-          "business_hours": "平日 11:30~14:00",
-          "note": ""
-        },
-        {
-          "id": "musubi",
-          "name": "むすびキッチン",
-          "location": "雄飛館2F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/nagomi.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "ラーニングコモンズ内に誕生した新たな洋食レストラン",
-          "start_time": "11:30",
-          "end_time": "14:00",
-          "business_hours": "平日 11:30~14:00",
-          "note": ""
-        },
-        {
-          "id": "sukiya",
-          "name": "すき家",
-          "location": "真理館1F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/sukiya.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "真理館１階に本学初のフードコートが誕生",
-          "start_time": "10:00",
-          "end_time": "19:00",
-          "business_hours": "平日 10:00~19:00 土 10:00~15:00",
-          "note": ""
-        },
-        {
-          "id": "kitchen-sun",
-          "name": "キッチンサン",
-          "location": "真理館1F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/wr-campuslife/welfare/kitchinsun.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "ボリューム満点の週替わりメニューが充実",
-          "start_time": "11:00",
-          "end_time": "14:00",
-          "business_hours": "平日 11:00~14:00",
-          "note": ""
-        },
-        {
-          "id": "kamukura",
-          "name": "どうとんぼり神座",
-          "location": "真理館1F",
-          "category": "食堂",
-          "url": "https://www.kyoto-su.ac.jp/campus/welfare/kamukura/kamukura.html",
-          "google_map": "",
-          "image_url": "",
-          "headline": "白菜たっぷり、最後の一滴までおいしいラーメン",
-          "start_time": "11:00",
-          "end_time": "17:00",
-          "business_hours": "平日 11:00~17:00",
-          "note": ""
-        },
-        {
-          "id": "ascella",
-          "name": "ブックセンター Ascella（アスケラ）",
-          "location": "雄飛館1F",
-          "category": "ショップ",
-          "url": "",
-          "google_map": "",
-          "image_url": "",
-          "headline": "いて座の星の名を冠したアカデミックな書店",
-          "start_time": "8:45",
-          "end_time": "17:00",
-          "business_hours": "平日 8:45~17:00",
-          "note": ""
-        },
         {
           "id": "family-mart-heiraku",
           "name": "ファミリーマート",
@@ -172,36 +18,8 @@
           "image_url": "",
           "headline": "",
           "start_time": "8:00",
-          "end_time": "19:00",
+          "end_time": "14:00",
           "business_hours": "平日 8:00~19:00 水 8:00~18:00 土 8:00~17:00",
-          "note": ""
-        },
-        {
-          "id": "maruzen-ms",
-          "name": "丸善 M's style",
-          "location": "天地館1F",
-          "category": "ショップ",
-          "url": "",
-          "google_map": "",
-          "image_url": "",
-          "headline": "なんでもそろうキャンパスショップ",
-          "start_time": "10:00",
-          "end_time": "17:00",
-          "business_hours": "平日 10:00~17:00",
-          "note": ""
-        },
-        {
-          "id": "maruzen-pc",
-          "name": "丸善 パソコンプロショップ",
-          "location": "天地館1F",
-          "category": "ショップ",
-          "url": "",
-          "google_map": "",
-          "image_url": "",
-          "headline": "",
-          "start_time": "10:00",
-          "end_time": "18:00",
-          "business_hours": "平日 10:00~18:00",
           "note": ""
         },
         {
@@ -219,20 +37,6 @@
           "note": ""
         },
         {
-          "id": "family-mart-tenchi",
-          "name": "ファミリーマート",
-          "location": "天地館1F",
-          "category": "コンビニ",
-          "url": "",
-          "google_map": "",
-          "image_url": "",
-          "headline": "",
-          "start_time": "8:00",
-          "end_time": "19:00",
-          "business_hours": "平日 8:00~19:00 水 8:00~18:00 土 8:00~17:00",
-          "note": ""
-        },
-        {
           "id": "family-mart-motoyama",
           "name": "ファミリーマート",
           "location": "本山寮",
@@ -244,48 +48,6 @@
           "start_time": "6:00",
           "end_time": "22:00",
           "business_hours": "日~月 6:00~22:00",
-          "note": ""
-        },
-        {
-          "id": "ksuksu",
-          "name": "CAFE KSUKSU",
-          "location": "むすびわざ館1F",
-          "category": "食堂",
-          "url": "",
-          "google_map": "",
-          "image_url": "",
-          "headline": "",
-          "start_time": "12:00",
-          "end_time": "13:00",
-          "business_hours": "平日 12:00~13:00",
-          "note": ""
-        },
-        {
-          "id": "dqSe1b",
-          "name": "メロンパンみのり",
-          "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b",
-          "image_url": "",
-          "headline": "メロンパンみのり",
-          "location": "大学内指定場所",
-          "google_map": "",
-          "category": "キッチンカー",
-          "start_time": "11:00",
-          "end_time": "17:00",
-          "business_hours": "11:00〜17:00",
-          "note": ""
-        },
-        {
-          "id": "2ZSvWJ",
-          "name": "Xingfukitchen",
-          "url": "https://schedule.mellow.jp/ss_web/shops/2ZSvWJ",
-          "image_url": "",
-          "headline": "タルタル唐揚げ",
-          "location": "大学内指定場所",
-          "google_map": "",
-          "category": "キッチンカー",
-          "start_time": "11:00",
-          "end_time": "17:00",
-          "business_hours": "11:00〜17:00",
           "note": ""
         },
         {
@@ -339,7 +101,7 @@
       ]
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-24",
       "timezone": "JST",
       "facilities": [
         {
@@ -673,7 +435,7 @@
       ]
     },
     {
-      "date": "2026-11-18",
+      "date": "2026-11-25",
       "timezone": "JST",
       "facilities": [
         {
@@ -915,11 +677,25 @@
           "note": ""
         },
         {
-          "id": "aASDGZ",
-          "name": "ホーのおうち",
-          "url": "https://schedule.mellow.jp/ss_web/shops/aASDGZ",
+          "id": "vmSb9R",
+          "name": "Panda Kitchen",
+          "url": "https://schedule.mellow.jp/ss_web/shops/vmSb9R",
           "image_url": "",
-          "headline": "ホーのミートソースコロッケ丼",
+          "headline": "クロッフル",
+          "location": "大学内指定場所",
+          "google_map": "",
+          "category": "キッチンカー",
+          "start_time": "11:00",
+          "end_time": "17:00",
+          "business_hours": "11:00〜17:00",
+          "note": ""
+        },
+        {
+          "id": "NrSX7p",
+          "name": "媽媽菜館六花",
+          "url": "https://schedule.mellow.jp/ss_web/shops/NrSX7p",
+          "image_url": "",
+          "headline": "ユーリンチ丼（小、大）",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -979,7 +755,7 @@
       ]
     },
     {
-      "date": "2026-11-19",
+      "date": "2026-11-26",
       "timezone": "JST",
       "facilities": [
         {
@@ -1313,7 +1089,7 @@
       ]
     },
     {
-      "date": "2026-11-20",
+      "date": "2026-11-27",
       "timezone": "JST",
       "facilities": [
         {
@@ -1569,11 +1345,11 @@
           "note": ""
         },
         {
-          "id": "vmSoDg",
-          "name": "なかむーん家",
-          "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg",
+          "id": "evSkPV",
+          "name": "こむくろキッチン",
+          "url": "https://schedule.mellow.jp/ss_web/shops/evSkPV",
           "image_url": "",
-          "headline": "あいがけカレー",
+          "headline": "トンカツ弁当",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -1583,11 +1359,11 @@
           "note": ""
         },
         {
-          "id": "5gSVA6",
-          "name": "銀座六丁目、フライの家。京都店",
-          "url": "https://schedule.mellow.jp/ss_web/shops/5gSVA6",
+          "id": "vmSoDg",
+          "name": "なかむーん家",
+          "url": "https://schedule.mellow.jp/ss_web/shops/vmSoDg",
           "image_url": "",
-          "headline": "チキンチーズカツライスバーガー",
+          "headline": "あいがけカレー",
           "location": "大学内指定場所",
           "google_map": "",
           "category": "キッチンカー",
@@ -1647,7 +1423,7 @@
       ]
     },
     {
-      "date": "2026-11-21",
+      "date": "2026-11-28",
       "timezone": "JST",
       "facilities": [
         {
@@ -1771,23 +1547,9 @@
       ]
     },
     {
-      "date": "2026-11-22",
+      "date": "2026-11-29",
       "timezone": "JST",
       "facilities": [
-        {
-          "id": "family-mart-heiraku",
-          "name": "ファミリーマート",
-          "location": "並楽館1F",
-          "category": "コンビニ",
-          "url": "",
-          "google_map": "",
-          "image_url": "",
-          "headline": "",
-          "start_time": "8:00",
-          "end_time": "14:00",
-          "business_hours": "平日 8:00~19:00 水 8:00~18:00 土 8:00~17:00",
-          "note": ""
-        },
         {
           "id": "nasic",
           "name": "学生情報センター （ナジック）",
