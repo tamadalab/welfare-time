@@ -700,6 +700,34 @@
       "start_time": "12:00",
       "end_time": "13:00",
       "note": ""
+    },
+    {
+      "date": "2026-12-01",
+      "location": "むすびわざ館1F",
+      "start_time": "12:00",
+      "end_time": "13:00",
+      "note": ""
+    },
+    {
+      "date": "2026-12-02",
+      "location": "むすびわざ館1F",
+      "start_time": "12:00",
+      "end_time": "13:00",
+      "note": ""
+    },
+    {
+      "date": "2026-12-03",
+      "location": "むすびわざ館1F",
+      "start_time": "12:00",
+      "end_time": "13:00",
+      "note": ""
+    },
+    {
+      "date": "2026-12-04",
+      "location": "むすびわざ館1F",
+      "start_time": "12:00",
+      "end_time": "13:00",
+      "note": ""
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-25T07:04:17.510324+09:00",
+  "last_updated": "2026-11-26T07:04:21.066415+09:00",
   "timezone": "JST",
   "data_range": {
     "start": "2026-05-01",
@@ -55,6 +55,13 @@
       "month": "2026-11",
       "last_modified": "2026-11-04T10:36:35+09:00",
       "fetched_at": "2026-11-05T07:04:01.633895+09:00"
+    },
+    {
+      "name": "2026_12.pdf",
+      "url": "https://tamadalab.github.io/welfare-time/daily/2026_12.pdf",
+      "month": "2026-12",
+      "last_modified": "2026-11-25T09:14:41+09:00",
+      "fetched_at": "2026-11-26T07:04:11.023765+09:00"
     }
   ]
 }
