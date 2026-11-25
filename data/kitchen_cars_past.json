@@ -1771,6 +1771,17 @@
     "url": "https://schedule.mellow.jp/ss_web/shops/vmSb9R"
   },
   {
+    "id": "NrSX7p",
+    "name": "媽媽菜館六花",
+    "location": "",
+    "date": "2026-11-25",
+    "start_time": "11:00",
+    "end_time": "17:00",
+    "business_hours": "11:00〜17:00",
+    "headline": "ユーリンチ丼（小、大）",
+    "url": "https://schedule.mellow.jp/ss_web/shops/NrSX7p"
+  },
+  {
     "id": "EpSrJN",
     "name": "Lo Splendore",
     "location": "",
@@ -2033,16 +2044,5 @@
     "business_hours": "11:00〜17:00",
     "headline": "メロンパンみのり",
     "url": "https://schedule.mellow.jp/ss_web/shops/dqSe1b"
-  },
-  {
-    "id": "NrSX7p",
-    "name": "媽媽菜館六花",
-    "location": "",
-    "date": "2026-11-25",
-    "start_time": "11:00",
-    "end_time": "17:00",
-    "business_hours": "11:00〜17:00",
-    "headline": "ユーリンチ丼（小、大）",
-    "url": "https://schedule.mellow.jp/ss_web/shops/NrSX7p"
   }
 ]
