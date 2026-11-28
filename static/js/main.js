@@ -280,10 +280,15 @@ function buildCardHtml(shop, status, view) {
     const linkHtml = (shop.url && /^https?:\/\//.test(shop.url))
         ? `<a href="${escapeHtml(shop.url)}" target="_blank" class="absolute inset-0 z-10" aria-label="${name}の情報を開く"></a>`
         : '';
+    // 押せるカードだけを浮き上がらせ、リンクのないカードを押せるように見せない。
+    // transition-all は、マップのページでカードを薄くする動きにも使うので、リンクの有無によらず付ける。
+    const hoverClass = linkHtml
+        ? (view === 'grid' ? 'hover:shadow-md hover:-translate-y-1' : 'hover:shadow-md')
+        : '';
     let html = '';
     if (view === 'grid') {
         html = `
-        <div id="card-${id}" data-location="${location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1">
+        <div id="card-${id}" data-location="${location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 shadow-sm transition-all duration-200 ${hoverClass}">
             <div class="flex justify-between items-start mb-2 gap-2">
                 <div class="flex items-center gap-1 min-w-0">
                     <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">${category}</span>
@@ -312,7 +317,7 @@ function buildCardHtml(shop, status, view) {
         </div>`;
     } else {
         html = `
-        <div id="card-${id}" data-location="${location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm hover:shadow-md transition-all duration-200">
+        <div id="card-${id}" data-location="${location}" class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm transition-all duration-200 ${hoverClass}">
             <div class="flex justify-between items-start mb-2 gap-2">
                 <div class="flex items-center gap-2 min-w-0">
                     <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">${category}</span>
